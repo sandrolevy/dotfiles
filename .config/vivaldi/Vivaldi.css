@@ -1,0 +1,60 @@
+/* DISABLING UNWANTED UI ELEMENTS */
+
+/* No close/minimize/maximize buttons, */
+.window-buttongroup { 
+    display: none !important;
+}
+
+ /* No menu button; you can toggle the menu with ALT or F10, */
+.vivaldi {
+    display: none !important;
+}
+
+/* No new tab button. Use Quick Command/CTRL-T, */
+div.button-toolbar.newtab { 
+    display: none !important;
+}
+
+/* No close tab button */
+#tabs-container .close {
+    display: none !important; 
+}
+
+/* No trash button */
+.toolbar-tabbar > .button-toolbar.toggle-trash,
+.toolbar-tabbar > .toolbar-group > .button-toolbar.toggle-trash {
+    display: none !important;
+}
+
+/* Ensures I have no top bars at all in full screen or CTRL-F11 */
+#header { 
+    min-height: 0px !important;
+}
+
+/* TAB CONTAINER */
+#tabs-container.top {
+    padding-left: 0px !important;
+    padding-right: 0px !important; /* Tab bar uses entire window width */
+    padding-top: 0px !important; /* remove Vivaldi useless tab top-padding */
+    border: 0 !important; /* No border below tab bar */
+}
+
+/* ACTIVE TAB */
+.tab.active {
+    background-color: var(--colorAccentBgDark) !important;
+    text-shadow: 1px 1px 1px black !important;
+}
+.tab-position { /* If active tab has a min-width set in Vivaldi settings, */
+    transition: .5s !important; /* make it expand smoothly. */
+}
+
+.color-behind-tabs-on .SearchField, .color-behind-tabs-on .UrlBar-AddressField:focus-within{
+    border-color: #282a38 !important;
+}
+
+.toolbar-tabbar.sync-and-trash-container{
+    display: none !important;
+}
+
+
+
