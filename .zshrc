@@ -3,7 +3,7 @@
 #	 _\ \/ /__   https://github.com/sandrolevy
 #	/___/____/
 #          
-# My bash config. Not much to see here; just some pretty standard stuff.
+# My zsh config. Not much to see here; just some pretty standard stuff.
 
 ### CHANGE TITLE OF TERMINALS
 case ${TERM} in
@@ -56,7 +56,6 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # vim and emacs
-alias vim="nvim"
 alias em="/usr/bin/emacs -nw"
 alias emacs="emacsclient -c -a 'emacs'"
 alias doomsync="~/.emacs.d/bin/doom sync"

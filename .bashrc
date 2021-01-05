@@ -37,7 +37,6 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # vim and emacs
-alias vim="nvim"
 alias em="/usr/bin/emacs -nw"
 alias emacs="emacsclient -c -a 'emacs'"
 alias doomsync="~/.emacs.d/bin/doom sync"
@@ -66,7 +65,7 @@ alias rm='rm -i'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
 
 #ignore upper and lowercase when TAB completion
-bind "set completion-ignore-case on"
+#bind "set completion-ignore-case on"
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
@@ -228,7 +227,7 @@ export FZF_ALT_C_COMMAND='command fdfind --hidden --no-ignore --ignore-case -t d
 
 ## OPENING FILES ##
 open() {
-  IFS=$'\n' out=("$(fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  IFS=$'\n' out=("$(fdfind . $HOME|fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
   key=$(head -1 <<< "$out")
   file=$(head -2 <<< "$out" | tail -1)
   xdg-open "$file">/dev/null 2>&1
