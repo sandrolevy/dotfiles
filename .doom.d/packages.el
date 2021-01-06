@@ -65,3 +65,4 @@
 (package! tldr)
 (package! wc-mode)
 (package! writeroom-mode)
+(package! dired-hide-dotfiles)

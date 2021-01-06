@@ -52,6 +52,10 @@
                               ("png" . "sxiv")
                               ("mkv" . "vlc")
                               ("mp4" . "vlc")))
+;; Show/Hide dotfiles
+(map! :leader
+      :desc "Show/Hide dotfiles"
+      "t h" #'dired-hide-dotfiles-mode)
 
 (setq doom-theme 'doom-dracula)
 (map! :leader

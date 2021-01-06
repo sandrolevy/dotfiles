@@ -118,6 +118,10 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
                               ("png" . "sxiv")
                               ("mkv" . "vlc")
                               ("mp4" . "vlc")))
+;; Show/Hide dotfiles
+(map! :leader
+      :desc "Show/Hide dotfiles"
+      "t h" #'dired-hide-dotfiles-mode)
 #+END_SRC
 
 * DOOM THEME
