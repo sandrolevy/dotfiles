@@ -13,15 +13,15 @@
 	/home/sandro-levy/
 	..
 1609368536
-'z
-	/home/sandro-levy
-	.config
-1609544669
+'k
+	/home/sandro-levy/.config/vifm/scripts
+	vifmrun
+1609893827
 
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v1
 ov
@@ -30,96 +30,84 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/sandro-levy/.config/PulseEffects
-	output
-4
-d/home/sandro-levy/.config/PulseEffects/output
-	..
-0
-d/home/sandro-levy
-	.config
-3
-d/home/sandro-levy/.config
-	cmus
-5
-d/home/sandro-levy/.config/cmus
-	themes
-2
-d/home/sandro-levy/.config/cmus/themes
-	..
-0
-d/home/sandro-levy/.config/cmus
-	..
-0
-d/home/sandro-levy/.config
-	cmus
-5
-d/home/sandro-levy/.config/cmus
-	..
-0
-d/home/sandro-levy/.config
-	cmus
-5
-d/home/sandro-levy
-	Downloads
-18
 d/home/sandro-levy/Downloads
-	..
-0
-d/home/sandro-levy
-	.config
-3
-d/home/sandro-levy/.config
-	cmus
-5
-d/home/sandro-levy/.config/cmus
-	colorfull.theme
-4
-d/home/sandro-levy/.config
-	cmus
-5
+	Obsidian-0.10.1.AppImage
+6
 d/home/sandro-levy
 	Downloads
 3
 d/home/sandro-levy/Downloads
-	..
-0
+	Obsidian-0.10.1.AppImage
+6
 d/home/sandro-levy
-	.config
+	Downloads
 3
-d/home/sandro-levy/.config
-	vifm
-25
-d/home/sandro-levy/.config/vifm
-	colors
+d/home/sandro-levy/Downloads
+	Obsidian-0.10.1.AppImage
+6
+d/home/sandro-levy
+	Desktop
 1
-d/home/sandro-levy/.config/vifm/colors
-	distrotube.vifm
-3
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config
-	htop
-4
-d/home/sandro-levy/.config/htop
-	..
-0
-d/home/sandro-levy/.config
-	autostart
-3
-d/home/sandro-levy
-	Music
-5
-d/home/sandro-levy/Music
-	..
-0
-d/home/sandro-levy
-	Music
-5
 d/home
 	sandro-levy
 3
+d/home/sandro-levy
+	LIBRARY
+4
+d/home/sandro-levy/LIBRARY
+	Levy
+4
+d/home/sandro-levy/LIBRARY/Levy
+	Documents
+2
+d/home/sandro-levy/LIBRARY
+	Levy
+4
+d/home/sandro-levy
+	LIBRARY
+4
+d/home
+	sandro-levy
+3
+d/
+	media
+10
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
+	Seagate HD Externo
+1
+d/media/sandro-levy/Seagate HD Externo
+	Séries
+6
+d/media/sandro-levy/Seagate HD Externo/Séries
+	Person of Interest
+6
+d/media/sandro-levy/Seagate HD Externo/Séries/Person of Interest
+	3 ° Temporada
+3
+d/media/sandro-levy/Seagate HD Externo/Séries/Person of Interest/3 ° Temporada
+	Person.of.Interest.s03e18.720p.Bluray.ComandoFilmes.PradO.mkv
+18
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/
+	mnt
+11
+d/mnt
+	..
+0
 d/
 	home
 4
@@ -127,212 +115,245 @@ d/home
 	sandro-levy
 3
 d/home/sandro-levy
-	Music
-5
-d/home
-	sandro-levy
-3
-d/home/sandro-levy
-	Music
-5
-d/home
-	sandro-levy
-3
-d/home/sandro-levy
 	Downloads
 3
 d/home/sandro-levy/Downloads
-	bash.pdf
-7
+	Obsidian-0.10.1.AppImage
+6
 d/home/sandro-levy
-	Downloads
+	.local
+9
+d/home/sandro-levy/.local
+	lib
 3
+d/home/sandro-levy/.local/lib
+	..
+0
+d/home/sandro-levy/.local
+	include
+2
+d/home/sandro-levy/.local/include
+	python3.8
+1
+d/home/sandro-levy/.local
+	bin
+1
+d/home/sandro-levy/.local/bin
+	..
+0
+d/home/sandro-levy/.local
+	share
+4
+d/home/sandro-levy/.local/share
+	marker
+17
+d/home/sandro-levy/.local
+	share
+4
+d/home/sandro-levy
+	.config
+3
+d/home/sandro-levy/.config
+	VirtualBox
+2
+d/home/sandro-levy/.config/VirtualBox
+	selectorwindow.log.7
+16
+d/home/sandro-levy/.config
+	VirtualBox
+2
+d/home/sandro-levy
+	VirtualBox VMs
+28
+d/home/sandro-levy/VirtualBox VMs
+	..
+0
+d/home/sandro-levy
+	VirtualBox VMs
+28
+d/home
+	sandro-levy
+3
+d/
+	media
+10
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/
+	home
+4
 d/home
 	sandro-levy
 3
 d/home/sandro-levy
-	.config
-3
-d/home/sandro-levy/.config
-	vifm
-25
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config/vifm/colors
-	distrotube.vifm
-2
-d/home/sandro-levy/.config/vifm
-	scripts
-2
-d/home/sandro-levy/.config/vifm/scripts
-	README
-1
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config/vifm/colors
-	colorful.vifm
-2
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config
-	..
-0
-d/home/sandro-levy
-	.config
-3
-d/home/sandro-levy/.config
-	PulseEffects
-1
-d/home/sandro-levy/.config/PulseEffects
-	..
-0
-d/home/sandro-levy/.config
-	dconf
+	Downloads
+21
+d/home/sandro-levy/Downloads
+	Qubes-R4.0.4-rc1-x86_64
 6
-d/home/sandro-levy/.config/dconf
-	..
-0
-d/home/sandro-levy/.config
-	gedit
-10
-d/home/sandro-levy/.config/gedit
-	..
-0
-d/home/sandro-levy/.config
-	gnome-control-center
-11
-d/home/sandro-levy/.config/gnome-control-center
-	..
-0
-d/home/sandro-levy/.config
-	gnome-session
-12
-d/home/sandro-levy/.config/gnome-session
-	saved-session
+d/home/sandro-levy/Downloads/Qubes-R4.0.4-rc1-x86_64
+	Qubes-R4.0.4-rc1-x86_64.iso
 1
-d/home/sandro-levy/.config/gnome-session/saved-session
-	..
-0
-d/home/sandro-levy/.config/gnome-session
-	..
-0
-d/home/sandro-levy/.config
-	htop
-13
-d/home/sandro-levy/.config/htop
-	..
-0
-d/home/sandro-levy/.config
-	ibus
-13
-d/home/sandro-levy/.config/ibus
-	..
-0
-d/home/sandro-levy/.config
-	lsp-plugins
-13
-d/home/sandro-levy/.config/lsp-plugins
-	..
-0
-d/home/sandro-levy/.config
-	nautilus
-13
-d/home/sandro-levy/.config/nautilus
-	..
-0
-d/home/sandro-levy/.config
-	pop-shell
-13
-d/home/sandro-levy/.config/pop-shell
-	..
-0
-d/home/sandro-levy/.config
-	pulse
-13
-d/home/sandro-levy/.config/pulse
-	..
-0
-d/home/sandro-levy/.config
-	vivaldi
-13
-d/home/sandro-levy/.config/vivaldi
-	Vivaldi.css
-17
-d/home/sandro-levy/.config
-	..
-0
+d/home/sandro-levy/Downloads
+	Qubes-R4.0.4-rc1-x86_64
+6
 d/home/sandro-levy
-	.config
+	.zshrc
+40
+d/home
+	sandro-levy
 3
-d/home/sandro-levy/.config
-	gedit
+d/
+	media
 10
-d/home/sandro-levy/.config/gedit
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
 	..
 0
-d/home/sandro-levy/.config
-	gedit
+d/media
+	..
+0
+d/
+	media
 10
-d/home/sandro-levy/.config/gedit
-	accels
+d/media
+	sandro-levy
 1
-d/home/sandro-levy/.config
-	lsp-plugins
-13
-d/home/sandro-levy
-	.themes
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/
+	media
+10
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/
+	media
+10
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
+	Seagate HD Externo
+1
+d/media/sandro-levy/Seagate HD Externo
+	Séries
+6
+d/media/sandro-levy/Seagate HD Externo/Séries
+	Person of Interest
+6
+d/media/sandro-levy/Seagate HD Externo/Séries/Person of Interest
+	3 ° Temporada
+3
+d/media/sandro-levy/Seagate HD Externo/Séries/Person of Interest/3 ° Temporada
+	Person.of.Interest.s03e21.720p.Bluray.ComandoFilmes.PradO.mkv
+21
+d/media/sandro-levy/Seagate HD Externo
+	..
+0
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/media/sandro-levy
+	..
+0
+d/media
+	sandro-levy
+1
+d/
+	home
 4
-d/home/sandro-levy/.themes
-	dracula
-1
-d/home/sandro-levy/.themes/dracula
+d/home
+	sandro-levy
+3
+d/home/sandro-levy
+	Downloads
+17
+d/home/sandro-levy/Downloads
+	.TAREFAS.MD.swp
+5
+d/home/sandro-levy
+	Downloads
+17
+d/home/sandro-levy/Downloads
+	Obsidian-0.10.1.AppImage
+7
+d/home/sandro-levy
+	LIBRARY
+18
+d/home/sandro-levy/LIBRARY
+	Levy
+4
+d/home/sandro-levy/LIBRARY/Levy
+	Documents
+2
+d/home/sandro-levy/LIBRARY/Levy/Documents
 	..
 0
-d/home/sandro-levy/.themes
-	dracula
-1
-d/home/sandro-levy
-	.themes
+d/home/sandro-levy/LIBRARY/Levy
+	Downloads
+3
+d/home/sandro-levy/LIBRARY/Levy/Downloads
+	rosane_levy.pdf
+15
+d/home/sandro-levy/LIBRARY/Levy
+	Downloads
+3
+d/home/sandro-levy/LIBRARY
+	Levy
 4
-d/home/sandro-levy/.themes
-	dracula
-1
 d/home/sandro-levy
-	.config
-3
-d/home/sandro-levy/.config
-	user-dirs.locale
+	Downloads
 17
-d/home/sandro-levy
-	.config
-3
-d/home/sandro-levy/.config
-	vifm
-25
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config/vifm/colors
-	colorful.vifm
-2
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config/vifm/colors
-	colorful.vifm
-2
-d/home/sandro-levy/.config/vifm
-	colors
-1
-d/home/sandro-levy/.config/vifm/colors
-	colorfull.vifm
-2
+d/home/sandro-levy/Downloads
+	screenshot-www.goomer.app-2021.01.05-15_11_30.png
+10
 d
 
 # Right window history (oldest to newest):
+D/home/sandro-levy/.config
+	vifm
+30
+D/home/sandro-levy/.config/vifm
+	scripts
+2
+D/home/sandro-levy/.config/vifm/scripts
+	teste
+1
+D/home/sandro-levy/.config/vifm
+	..
+0
+D/home/sandro-levy/.config
+	vifm
+30
+D/home/sandro-levy/.config/vifm
+	vifmrc
+6
+D/home/sandro-levy/.config
+	vifm
+30
 D/home/sandro-levy
 	..
 0
@@ -364,11 +385,108 @@ D/home/sandro-levy/Downloads
 	..
 0
 D/home/sandro-levy
+	Downloads
+3
+D/home/sandro-levy/Downloads
+	TAREFAS.MD
+7
+D/home/sandro-levy
+	Downloads
+3
+D/home
+	sandro-levy
+3
+D/home/sandro-levy
+	.config
+3
+D/home/sandro-levy/.config
+	vifm
+30
+D/home/sandro-levy/.config/vifm
+	vifmrc
+6
+D/home/sandro-levy/.config
+	vifm
+30
+D/home/sandro-levy
+	.config
+3
+D/home
+	sandro-levy
+3
+D/home/sandro-levy
+	LIBRARY
+25
+D/home/sandro-levy/LIBRARY
+	Levy
+4
+D/home/sandro-levy/LIBRARY/Levy
+	Documents
+2
+D/home/sandro-levy/LIBRARY
+	Google Drive
+3
+D/home/sandro-levy/LIBRARY/Google Drive
+	LEARNING
+2
+D/home/sandro-levy/LIBRARY/Google Drive/LEARNING
+	Cursos
+1
+D/home/sandro-levy/LIBRARY/Google Drive
+	DOCUMENTS
+1
+D/home/sandro-levy/LIBRARY/Google Drive/DOCUMENTS
+	Rosane Levy
+2
+D/home/sandro-levy/LIBRARY/Google Drive/DOCUMENTS/Rosane Levy
 	..
 0
+D/home/sandro-levy/LIBRARY/Google Drive/DOCUMENTS
+	Notes
+1
+D/home/sandro-levy/LIBRARY/Google Drive/DOCUMENTS/Notes
+	..
+0
+D/home/sandro-levy/LIBRARY/Google Drive/DOCUMENTS
+	Notesmd
+1
+D/home/sandro-levy
+	Org
+27
+D/home/sandro-levy/Org
+	..
+0
+D/home/sandro-levy
+	Pictures
+28
+D/media/sandro-levy/Seagate HD Externo
+	Séries
+6
+D/media/sandro-levy/Seagate HD Externo/Séries
+	Person of Interest
+6
+D/media/sandro-levy/Seagate HD Externo/Séries/Person of Interest
+	4° Temporada
+4
+D/media/sandro-levy/Seagate HD Externo/Séries/Person of Interest/4° Temporada
+	Person.Of.Interest.S04E01.720p.5.1Ch.Web-DL.ReEnc-DeeJayAhmed.mkv
+2
 D
 
 # Command line history (oldest to newest):
+:mkdir teste
+:test
+:mk teste
+:mk extract
+:extracts.txt
+:mkfile t
+:file t
+:vim
+:extract
+:command! extract extract %a %f %n
+:extract! sub
+:sudo extract! sub
+:chmod +x extract
 :trash
 :trashes
 :ltrashes
@@ -380,8 +498,22 @@ D
 :cd ..
 :q
 :view
-:shell
 :lstrash
+:umount
+:udiskie
+:UUmount
+:UUmount /
+:UDetach
+:shell
+:cd
+:cd music
+:grep goat
+:grep goat.mpt
+:grep goat.mp4
+:locate goat
+:goto
+:goto goat
+:media
 
 # Search history (oldest to newest):
 /seage
@@ -390,49 +522,48 @@ D
 /bin
 
 # Prompt history (oldest to newest):
+pmmand! extract extract %a %f %n
 pTAREFAS.MD
 pcolorfull.theme
 pcolorful.vifm
 pcolorfull.vifm
+prosane_levy.pdf
+pcardapio.png
+pNotesmd
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/sandro-levy/.local/share/vifm/Trash/000_.gitignore
+""/home/sandro-levy/.local/share/vifm/Trash/000_screenshot-www.goomer.app-2021.01.05-15_11_30.png
+""/home/sandro-levy/.local/share/vifm/Trash/000_screenshot-www.goomer.app-2021.01.05-15_12_16.png
 
 # Directory stack (oldest to newest):
 
 # Trash content:
-t/home/sandro-levy/.local/share/vifm/Trash/001_TAREFAS.MD
-	/home/sandro-levy/TAREFAS.MD
-t/home/sandro-levy/.local/share/vifm/Trash/000_themes
-	/home/sandro-levy/.config/cmus/themes
-t/home/sandro-levy/.local/share/vifm/Trash/000_.surf
-	/home/sandro-levy/.surf
-t/home/sandro-levy/.local/share/vifm/Trash/000_.git
-	/home/sandro-levy/.themes/dracula/.git
-t/home/sandro-levy/.local/share/vifm/Trash/000_.github
-	/home/sandro-levy/.themes/dracula/.github
-t/home/sandro-levy/.local/share/vifm/Trash/000_.gitignore
-	/home/sandro-levy/.themes/dracula/.gitignore
-t/home/sandro-levy/.local/share/vifm/Trash/000_TAREFAS.MD
-	/home/sandro-levy/Downloads/Linux Script/TAREFAS.MD
-t/home/sandro-levy/.local/share/vifm/Trash/000_polybar-themes
-	/home/sandro-levy/Downloads/Linux Script/polybar-themes
-t/home/sandro-levy/.local/share/vifm/Trash/000_favicons.vifm
-	/home/sandro-levy/Downloads/favicons.vifm
-t/home/sandro-levy/.local/share/vifm/Trash/000_PulseEffects
-	/home/sandro-levy/.config/PulseEffects
-t/home/sandro-levy/.local/share/vifm/Trash/000_pulse
-	/home/sandro-levy/.config/pulse
-t/home/sandro-levy/.local/share/vifm/Trash/000_geary
-	/home/sandro-levy/.config/geary
-t/home/sandro-levy/.local/share/vifm/Trash/000_COMANDO.TO - O.Ultimo.Turno.2020.1080p
-	/home/sandro-levy/Downloads/COMANDO.TO - O.Ultimo.Turno.2020.1080p
-t/home/sandro-levy/.local/share/vifm/Trash/000_banana.theme
-	/home/sandro-levy/.config/cmus/banana.theme
-t/home/sandro-levy/.local/share/vifm/Trash/000_.w3m
-	/home/sandro-levy/.w3m
+t/home/sandro-levy/.local/share/vifm/Trash/000_Endevouros
+	/home/sandro-levy/VirtualBox VMs/Endevouros
+t/home/sandro-levy/.local/share/vifm/Trash/000_ProfilePhoto.jpg
+	/home/sandro-levy/Downloads/ProfilePhoto.jpg
+t/home/sandro-levy/.local/share/vifm/Trash/000_screencast-meet.google.com-2021.01.04-10_05_35 (1).html
+	/home/sandro-levy/Downloads/screencast-meet.google.com-2021.01.04-10_05_35 (1).html
+t/home/sandro-levy/.local/share/vifm/Trash/000_screencast-meet.google.com-2021.01.04-10_05_35.html
+	/home/sandro-levy/Downloads/screencast-meet.google.com-2021.01.04-10_05_35.html
+t/home/sandro-levy/.local/share/vifm/Trash/000_.TAREFAS.MD.swp
+	/home/sandro-levy/Downloads/.TAREFAS.MD.swp
+t/home/sandro-levy/.local/share/vifm/Trash/000_cardapio.png
+	/home/sandro-levy/Downloads/cardapio.png
+t/home/sandro-levy/.local/share/vifm/Trash/000_screenshot-www.goomer.app-2021.01.05-15_11_30.png
+	/home/sandro-levy/Downloads/screenshot-www.goomer.app-2021.01.05-15_11_30.png
+t/home/sandro-levy/.local/share/vifm/Trash/000_screenshot-www.goomer.app-2021.01.05-15_12_16.png
+	/home/sandro-levy/Downloads/screenshot-www.goomer.app-2021.01.05-15_12_16.png
+t/home/sandro-levy/.local/share/vifm/Trash/000_teste
+	/home/sandro-levy/Downloads/teste
+t/home/sandro-levy/.local/share/vifm/Trash/001_teste
+	/home/sandro-levy/.config/vifm/scripts/teste
+t/home/sandro-levy/.local/share/vifm/Trash/000_extract
+	/home/sandro-levy/.config/vifm/scripts/extract
+t/home/sandro-levy/.local/share/vifm/Trash/000_João do Norte
+	/home/sandro-levy/Downloads/João do Norte
 
 # State:
 f
@@ -441,6 +572,6 @@ i1
 [F
 F
 I1
-].1
+].0
 ]F
 s0

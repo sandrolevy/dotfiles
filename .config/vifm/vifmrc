@@ -500,3 +500,12 @@ nnoremap <f8> :delete<cr>
 "     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
 "
 " let $VIFM_SERVER_NAME = v:servername
+
+" ------------------------------------------------------------------------
+" EXTRACT FILES
+
+command! extract extract %a %f %n
+command! extract! extract -f %a %f %n
+
+" ---------------------------------------------------------------------
+
