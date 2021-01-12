@@ -148,6 +148,7 @@
        ;;ocaml             ; an objective camel
        (org
         +org-bullets
+        +journal
         +roam
         +pretty
         +pomodoro)             ; organize your plain life in plain text

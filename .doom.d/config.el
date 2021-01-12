@@ -218,14 +218,17 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (setq org-directory "~/org/"
         org-agenda-files '("~/org/"
+                           "~/org/roam/journal"
                            "~/org/roam/")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-roam-capture-templates "~/org/roam"
+        org-roam-capture-templates "~/org/"
         org-ellipsis " ▼ "
         org-log-done 'time
-        org-journal-dir "~/org/journal/"
+        org-journal-dir "~/org/roam/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%Y-%m-%d.org"
+        org-journal-date-prefix "#+TITLE:"
+        org-journal-time-prefix "\n* "
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -265,6 +268,18 @@
 (defun dt/org-babel-tangle-current-buffer-async ()
   "Tangle current buffer asynchronously."
   (dt/org-babel-tangle-async (buffer-file-name)))
+
+(after! org
+  (defun my/generate-org-note-name ()
+    (setq my-org-note--name (read-string "Name: "))
+    (expand-file-name (format "%s.org" my-org-note--name) "~/org/roam"))
+
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file "~/org/inbox.org")
+           "* TODO %?\n%U" :empty-lines 1)
+          ("n" "Notes" plain
+           (file my/generate-org-note-name)
+           "%(format \"#+TITLE: %s\n\" my-org-note--name)"))))
 
 (map! :leader
       :desc "Copy to register"
@@ -320,7 +335,7 @@
       :desc "Counsel eshell history"
       "e h" #'counsel-esh-history)
 
-(let ((langs '("american" "francais" "brasileiro")))
+(let ((langs '("american" "french" "brazilian")))
   (setq lang-ring (make-ring (length langs)))
   (dolist (elem langs) (ring-insert lang-ring elem)))
 (let ((dics '("american-english" "french" "brazilian")))
