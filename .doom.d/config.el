@@ -5,6 +5,13 @@
       :desc "Save current bookmarks to bookmark file"
       "b w" #'bookmark-save)
 
+(defun efs/org-mode-visual-fill ()
+  (setq visual-fill-column-width 200
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(setq which-key-idle-delay 0.1)
+
 (setq centaur-tabs-set-bar 'over
       centaur-tabs-set-icons t
       centaur-tabs-gray-out-icons 'buffer
@@ -16,9 +23,13 @@
       :desc "Toggle tabs on/off"
       "t c" #'centaur-tabs-local-mode)
 (evil-define-key 'normal centaur-tabs-mode-map (kbd "g <right>") 'centaur-tabs-forward        ; default Doom binding is 'g t'
-                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
-                                               (kbd "g <down>")  'centaur-tabs-forward-group
-                                               (kbd "g <up>")    'centaur-tabs-backward-group)
+  (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
+  (kbd "g <down>")  'centaur-tabs-forward-group
+  (kbd "g <up>")    'centaur-tabs-backward-group)
+
+(after! deft
+  (setq deft-directory "~/org/")
+  (setq deft-recursive t))
 
 (map! :leader
       :desc "Dired"
@@ -132,9 +143,9 @@
       :desc "Search web for text between BEG/END"
       "s w" #'eww-search-words)
 
-(setq doom-font (font-spec :family "Fira Code" :size 15)
+(setq doom-font (font-spec :family "iA Writer Mono S" :size 16)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Fira Code" :size 24))
+      doom-big-font (font-spec :family "iA Writer Mono S" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -189,7 +200,7 @@
 
 (map! :leader
       :desc "Edit agenda file"
-      "- a" #'(lambda () (interactive) (find-file "~/Org/agenda.org"))
+      "- a" #'(lambda () (interactive) (find-file "~/org/"))
       :leader
       :desc "Edit doom config.org"
       "- c" #'(lambda () (interactive) (find-file "~/.doom.d/config.org"))
@@ -205,33 +216,35 @@
 
 (after! org
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (setq org-directory "~/Org/"
-        org-agenda-files '("~/Org/agenda.org")
+  (setq org-directory "~/org/"
+        org-agenda-files '("~/org/"
+                           "~/org/roam/")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
+        org-roam-capture-templates "~/org/roam"
         org-ellipsis " ▼ "
         org-log-done 'time
-        org-journal-dir "~/Org/journal/"
+        org-journal-dir "~/org/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%Y-%m-%d.org"
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
         org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
-          '(("google" . "http://www.google.com/search?q=")
-            ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
-            ("ddg" . "https://duckduckgo.com/?q=")
-            ("wiki" . "https://en.wikipedia.org/wiki/"))
+        '(("google" . "http://www.google.com/search?q=")
+          ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
+          ("ddg" . "https://duckduckgo.com/?q=")
+          ("wiki" . "https://en.wikipedia.org/wiki/"))
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
-          '((sequence
-             "TODO(t)"           ; A task that is ready to be tackled
-             "BLOG(b)"           ; Blog writing assignments
-             "GYM(g)"            ; Things to accomplish at the gym
-             "PROJ(p)"           ; A project that contains other tasks
-             "VIDEO(v)"          ; Video assignments
-             "WAIT(w)"           ; Something is holding up this task
-             "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-             "DONE(d)"           ; Task has been completed
-             "CANCELLED(c)" )))) ; Task has been cancelled
+        '((sequence
+           "TODO(t)"           ; A task that is ready to be tackled
+           "BLOG(b)"           ; Blog writing assignments
+           "GYM(g)"            ; Things to accomplish at the gym
+           "PROJ(p)"           ; A project that contains other tasks
+           "VIDEO(v)"          ; Video assignments
+           "WAIT(w)"           ; Something is holding up this task
+           "|"                 ; The pipe necessary to separate "active" states and "inactive" states
+           "DONE(d)"           ; Task has been completed
+           "CANCELLED(c)" )))) ; Task has been cancelled
 
 (defun dt/org-babel-tangle-async (file)
   "Invoke `org-babel-tangle-file' asynchronously."
@@ -307,6 +320,26 @@
       :desc "Counsel eshell history"
       "e h" #'counsel-esh-history)
 
+(let ((langs '("american" "francais" "brasileiro")))
+  (setq lang-ring (make-ring (length langs)))
+  (dolist (elem langs) (ring-insert lang-ring elem)))
+(let ((dics '("american-english" "french" "brazilian")))
+  (setq dic-ring (make-ring (length dics)))
+  (dolist (elem dics) (ring-insert dic-ring elem)))
+
+(defun cycle-ispell-languages ()
+  (interactive)
+  (let (
+        (lang (ring-ref lang-ring -1))
+        (dic (ring-ref dic-ring -1))
+        )
+    (ring-insert lang-ring lang)
+    (ring-insert dic-ring dic)
+    (ispell-change-dictionary lang)
+    (setq ispell-complete-word-dict (concat "/usr/share/dict/" dic))
+    ))
+(global-set-key [f6] 'cycle-ispell-languages)
+
 (defun prefer-horizontal-split ()
   (set-variable 'split-height-threshold nil t)
   (set-variable 'split-width-threshold 40 t)) ; make this as low as needed
@@ -314,6 +347,15 @@
 (map! :leader
       :desc "Clone indirect buffer other window"
       "b c" #'clone-indirect-buffer-other-window)
+
+(defconst doom-frame-transparency 95)
+(set-frame-parameter (selected-frame) 'alpha doom-frame-transparency)
+(add-to-list 'default-frame-alist `(alpha . ,doom-frame-transparency))
+(defun dwc-smart-transparent-frame ()
+  (set-frame-parameter
+   (selected-frame)
+   'alpha (if (frame-parameter (selected-frame) 'fullscreen)
+              100            doom-frame-transparency)))
 
 (map! :leader
       :desc "Winner redo"

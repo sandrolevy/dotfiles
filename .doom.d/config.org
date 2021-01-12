@@ -1,12 +1,13 @@
-#+TITLE: DT's Doom Emacs Config
-#+AUTHOR: Derek Taylor (DT)
-#+DESCRIPTION: DT's personal Doom Emacs config.
+#+TITLE: Doom Emacs Config
+#+AUTHOR: Sandro Levy forked from Derek Taylor (DT)
+#+DESCRIPTION: My personal Doom Emacs config.
 #+STARTUP: showeverything
 
 * TABLE OF CONTENTS :toc:
 - [[#about-this-config][ABOUT THIS CONFIG]]
 - [[#bookmarks-and-buffers][BOOKMARKS AND BUFFERS]]
 - [[#centaur-tabs][CENTAUR-TABS]]
+- [[#deft][DEFT]]
 - [[#dired][DIRED]]
 - [[#doom-theme][DOOM THEME]]
 - [[#elfeed][ELFEED]]
@@ -25,7 +26,9 @@
 - [[#registers][REGISTERS]]
 - [[#remote-connections][REMOTE CONNECTIONS]]
 - [[#shells][SHELLS]]
+- [[#spell-check-and-grammar][SPELL CHECK AND GRAMMAR]]
 - [[#splits][SPLITS]]
+- [[#transparent-windows][TRANSPARENT WINDOWS]]
 - [[#winner-mode][WINNER MODE]]
 
 * ABOUT THIS CONFIG 
@@ -41,6 +44,13 @@ Doom Emacs uses 'SPC b' for keybindings related to bookmarks and buffers.  Bookm
       :leader
       :desc "Save current bookmarks to bookmark file"
       "b w" #'bookmark-save)
+
+(defun efs/org-mode-visual-fill ()
+  (setq visual-fill-column-width 200
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(setq which-key-idle-delay 0.1)
 #+END_SRC
 
 * CENTAUR-TABS
@@ -66,9 +76,16 @@ To use tabs in Doom Emacs, be sure to uncomment "tabs" in Doom's init.el.  Displ
       :desc "Toggle tabs on/off"
       "t c" #'centaur-tabs-local-mode)
 (evil-define-key 'normal centaur-tabs-mode-map (kbd "g <right>") 'centaur-tabs-forward        ; default Doom binding is 'g t'
-                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
-                                               (kbd "g <down>")  'centaur-tabs-forward-group
-                                               (kbd "g <up>")    'centaur-tabs-backward-group)
+  (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
+  (kbd "g <down>")  'centaur-tabs-forward-group
+  (kbd "g <up>")    'centaur-tabs-backward-group)
+#+END_SRC
+
+* DEFT
+#+BEGIN_SRC emacs-lisp
+(after! deft
+  (setq deft-directory "~/org/")
+  (setq deft-recursive t))
 #+END_SRC
 
 * DIRED
@@ -249,9 +266,9 @@ Settings related to fonts within Doom Emacs:
 + 'font-lock-keyword-face' -- for keywords with special significance, like ‘for’ and ‘if’ in C.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Fira Code" :size 15)
+(setq doom-font (font-spec :family "iA Writer Mono S" :size 16)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Fira Code" :size 24))
+      doom-big-font (font-spec :family "iA Writer Mono S" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -365,7 +382,7 @@ Keybindings to open files that I work with all the time using the find-file comm
 #+BEGIN_SRC emacs-lisp
 (map! :leader
       :desc "Edit agenda file"
-      "- a" #'(lambda () (interactive) (find-file "~/Org/agenda.org"))
+      "- a" #'(lambda () (interactive) (find-file "~/org/"))
       :leader
       :desc "Edit doom config.org"
       "- c" #'(lambda () (interactive) (find-file "~/.doom.d/config.org"))
@@ -386,34 +403,35 @@ Note that I wrapped most of this in (after! org).  Without this, my settings mig
 #+BEGIN_SRC emacs-lisp
 (after! org
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (setq org-directory "~/Org/"
-        org-agenda-files '("~/Org/agenda.org")
+  (setq org-directory "~/org/"
+        org-agenda-files '("~/org/"
+                           "~/org/roam/")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
+        org-roam-capture-templates "~/org/roam"
         org-ellipsis " ▼ "
         org-log-done 'time
-        org-journal-dir "~/Org/journal/"
+        org-journal-dir "~/org/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%Y-%m-%d.org"
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
         org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
-          '(("google" . "http://www.google.com/search?q=")
-            ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
-            ("ddg" . "https://duckduckgo.com/?q=")
-            ("wiki" . "https://en.wikipedia.org/wiki/"))
+        '(("google" . "http://www.google.com/search?q=")
+          ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
+          ("ddg" . "https://duckduckgo.com/?q=")
+          ("wiki" . "https://en.wikipedia.org/wiki/"))
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
-          '((sequence
-             "TODO(t)"           ; A task that is ready to be tackled
-             "BLOG(b)"           ; Blog writing assignments
-             "GYM(g)"            ; Things to accomplish at the gym
-             "PROJ(p)"           ; A project that contains other tasks
-             "VIDEO(v)"          ; Video assignments
-             "WAIT(w)"           ; Something is holding up this task
-             "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-             "DONE(d)"           ; Task has been completed
-             "CANCELLED(c)" )))) ; Task has been cancelled
-
+        '((sequence
+           "TODO(t)"           ; A task that is ready to be tackled
+           "BLOG(b)"           ; Blog writing assignments
+           "GYM(g)"            ; Things to accomplish at the gym
+           "PROJ(p)"           ; A project that contains other tasks
+           "VIDEO(v)"          ; Video assignments
+           "WAIT(w)"           ; Something is holding up this task
+           "|"                 ; The pipe necessary to separate "active" states and "inactive" states
+           "DONE(d)"           ; Task has been completed
+           "CANCELLED(c)" )))) ; Task has been cancelled
 #+END_SRC
 
 I was tired of having to run org-babel-tangle after saving my literate dotfiles.  So the following function runs org-babel-tangle upon saving any org-mode buffer.  This is asynchronous meaning that it dispatches the tangle function to a subprocess, so that the main Emacs is not blocked while it runs.
@@ -530,6 +548,30 @@ Settings for the various shells and terminal emulators within Emacs.
       "e h" #'counsel-esh-history)
 #+END_SRC
 
+* SPELL CHECK AND GRAMMAR
+
+#+BEGIN_SRC emacs-lisp
+(let ((langs '("american" "francais" "brasileiro")))
+  (setq lang-ring (make-ring (length langs)))
+  (dolist (elem langs) (ring-insert lang-ring elem)))
+(let ((dics '("american-english" "french" "brazilian")))
+  (setq dic-ring (make-ring (length dics)))
+  (dolist (elem dics) (ring-insert dic-ring elem)))
+
+(defun cycle-ispell-languages ()
+  (interactive)
+  (let (
+        (lang (ring-ref lang-ring -1))
+        (dic (ring-ref dic-ring -1))
+        )
+    (ring-insert lang-ring lang)
+    (ring-insert dic-ring dic)
+    (ispell-change-dictionary lang)
+    (setq ispell-complete-word-dict (concat "/usr/share/dict/" dic))
+    ))
+(global-set-key [f6] 'cycle-ispell-languages)
+#+END_SRC
+
 * SPLITS
 I set splits to default to opening on the right using 'prefer-horizontal-split'.  I set a keybinding for 'clone-indirect-buffer-other-window' for when I want to have the same document in two splits.  The text of the indirect buffer is always identical to the text of its base buffer; changes made by editing either one are visible immediately in the other.  But in all other respects, the indirect buffer and its base buffer are completely separate.  For example, I can fold one split but other will be unfolded.
 
@@ -543,6 +585,21 @@ I set splits to default to opening on the right using 'prefer-horizontal-split'.
       "b c" #'clone-indirect-buffer-other-window)
 #+END_SRC
 
+* TRANSPARENT WINDOWS
+I don't really like to use transparency window in emacs. I placed this in my config to help other who may want this kind of fell.
+To turn this on just uncomment the following lines.
+
+#+BEGIN_SRC emacs-lisp
+(defconst doom-frame-transparency 95)
+(set-frame-parameter (selected-frame) 'alpha doom-frame-transparency)
+(add-to-list 'default-frame-alist `(alpha . ,doom-frame-transparency))
+(defun dwc-smart-transparent-frame ()
+  (set-frame-parameter
+   (selected-frame)
+   'alpha (if (frame-parameter (selected-frame) 'fullscreen)
+              100            doom-frame-transparency)))
+#+END_SRC
+
 * WINNER MODE
 Winner mode has been included with GNU Emacs since version 20.  This is a global minor mode and, when activated, it allows you to “undo” (and “redo”) changes in the window configuration with the key commands 'SCP w <left>' and 'SPC w <right>'.
 
@@ -554,3 +611,4 @@ Winner mode has been included with GNU Emacs since version 20.  This is a global
       :desc "Winner undo"
       "w <left>" #'winner-undo)
 #+END_SRC
+

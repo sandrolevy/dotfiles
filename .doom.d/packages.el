@@ -66,3 +66,6 @@
 (package! wc-mode)
 (package! writeroom-mode)
 (package! dired-hide-dotfiles)
+(package! visual-fill-column)
+(package! centered-window-mode)
+(package! evil-multiedit)
