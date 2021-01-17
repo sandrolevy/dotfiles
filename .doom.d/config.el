@@ -143,7 +143,7 @@
       :desc "Search web for text between BEG/END"
       "s w" #'eww-search-words)
 
-(setq doom-font (font-spec :family "iA Writer Mono S" :size 16)
+(setq doom-font (font-spec :family "iA Writer Mono S" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "iA Writer Mono S" :size 24))
 (after! doom-themes
