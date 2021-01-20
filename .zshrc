@@ -86,6 +86,7 @@ alias rm='rm -i'
 # bare git repo alias for dotfiles
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 
+alias full-update="sudo apt list --upgradable && sudo apt update && sudo apt dist-upgrade && sudo apt install -f && sudo apt autoremove && sudo apt autoclean && sudo flatpak update"
 
 # Uncomment the following line if pasting URLs and other text is 
 # Which plugins would you like to load?
