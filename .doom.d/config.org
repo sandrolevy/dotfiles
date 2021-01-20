@@ -428,14 +428,20 @@ Note that I wrapped most of this in (after! org).  Without this, my settings mig
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
         '((sequence
            "TODO(t)"           ; A task that is ready to be tackled
-           "BLOG(b)"           ; Blog writing assignments
-           "GYM(g)"            ; Things to accomplish at the gym
-           "PROJ(p)"           ; A project that contains other tasks
-           "VIDEO(v)"          ; Video assignments
-           "WAIT(w)"           ; Something is holding up this task
+           "READ(r)"           ; Read assignments
+           "WATCH(w)"          ; Media that I need to watch latter
+           "DOWNLOAD(d)"       ; Something that are necessary to save offilne
+           "LEARN(l)"          ; Learn assignments
+           "SOMEDAY(s)"        ; Something is holding up this task
            "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-           "DONE(d)"           ; Task has been completed
-           "CANCELLED(c)" )))) ; Task has been cancelled
+           "DONE(f)"           ; Task has been completed/finished
+           "CANCELED(c)" ))
+        org-todo-keyword-faces
+        '(("LEARN" . "ff5555")
+          ("CANCELED" . "#44475a")
+          ("WATCH" . "#ff79c6")
+          ("TODO" . (:foreground "#ff5555" :weight bold))
+          ("READ" . "#8be9fd")("SOMEDAY" . "#f1fa8c")("BANANA" . "8be9fd"))))    ; Task has been cancelled
 #+END_SRC
 
 I was tired of having to run org-babel-tangle after saving my literate dotfiles.  So the following function runs org-babel-tangle upon saving any org-mode buffer.  This is asynchronous meaning that it dispatches the tangle function to a subprocess, so that the main Emacs is not blocked while it runs.
@@ -463,19 +469,21 @@ I was tired of having to run org-babel-tangle after saving my literate dotfiles.
 #+END_SRC
 
 ** ORG CAPTURE TEMPLATES
-#+begin_src emacs-lisp
+ #+begin_src emacs-lisp
 (after! org
   (defun my/generate-org-note-name ()
     (setq my-org-note--name (read-string "Name: "))
     (expand-file-name (format "%s.org" my-org-note--name) "~/org/roam"))
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file "~/org/inbox.org")
+        '(("t" "Todo" entry (file "~/org/roam/inbox.org")
            "* TODO %?\n%U" :empty-lines 1)
           ("n" "Notes" plain
            (file my/generate-org-note-name)
            "%(format \"#+TITLE: %s\n\" my-org-note--name)"))))
-#+end_src
+ #+end_src
+
+
 * REGISTERS
 Emacs registers are compartments where you can save text, rectangles and positions for later use. Once you save text or a rectangle in a register, you can copy it into the buffer once or many times; once you save a position in a register, you can jump back to that position once or many times.  The default GNU Emacs keybindings for these commands (with the exception of counsel-register) involves 'C-x r' followed by one or more other keys.  I wanted to make this a little more user friendly, and since I am using Doom Emacs, I choose to replace the 'C-x r' part of the key chords with 'SPC r'.
 
@@ -608,7 +616,7 @@ I don't really like to use transparency window in emacs. I placed this in my con
 To turn this on just uncomment the following lines.
 
 #+BEGIN_SRC emacs-lisp
-(defconst doom-frame-transparency 95)
+(defconst doom-frame-transparency 100)
 (set-frame-parameter (selected-frame) 'alpha doom-frame-transparency)
 (add-to-list 'default-frame-alist `(alpha . ,doom-frame-transparency))
 (defun dwc-smart-transparent-frame ()

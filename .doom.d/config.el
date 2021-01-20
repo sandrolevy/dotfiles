@@ -240,14 +240,20 @@
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
         '((sequence
            "TODO(t)"           ; A task that is ready to be tackled
-           "BLOG(b)"           ; Blog writing assignments
-           "GYM(g)"            ; Things to accomplish at the gym
-           "PROJ(p)"           ; A project that contains other tasks
-           "VIDEO(v)"          ; Video assignments
-           "WAIT(w)"           ; Something is holding up this task
+           "READ(r)"           ; Read assignments
+           "WATCH(w)"          ; Media that I need to watch latter
+           "DOWNLOAD(d)"       ; Something that are necessary to save offilne
+           "LEARN(l)"          ; Learn assignments
+           "SOMEDAY(s)"        ; Something is holding up this task
            "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-           "DONE(d)"           ; Task has been completed
-           "CANCELLED(c)" )))) ; Task has been cancelled
+           "DONE(f)"           ; Task has been completed/finished
+           "CANCELED(c)" ))
+        org-todo-keyword-faces
+        '(("LEARN" . "ff5555")
+          ("CANCELED" . "#44475a")
+          ("WATCH" . "#ff79c6")
+          ("TODO" . (:foreground "#ff5555" :weight bold))
+          ("READ" . "#8be9fd")("SOMEDAY" . "#f1fa8c")("BANANA" . "8be9fd"))))    ; Task has been cancelled
 
 (defun dt/org-babel-tangle-async (file)
   "Invoke `org-babel-tangle-file' asynchronously."
@@ -275,7 +281,7 @@
     (expand-file-name (format "%s.org" my-org-note--name) "~/org/roam"))
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file "~/org/inbox.org")
+        '(("t" "Todo" entry (file "~/org/roam/inbox.org")
            "* TODO %?\n%U" :empty-lines 1)
           ("n" "Notes" plain
            (file my/generate-org-note-name)
@@ -363,7 +369,7 @@
       :desc "Clone indirect buffer other window"
       "b c" #'clone-indirect-buffer-other-window)
 
-(defconst doom-frame-transparency 95)
+(defconst doom-frame-transparency 100)
 (set-frame-parameter (selected-frame) 'alpha doom-frame-transparency)
 (add-to-list 'default-frame-alist `(alpha . ,doom-frame-transparency))
 (defun dwc-smart-transparent-frame ()
