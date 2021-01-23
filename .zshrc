@@ -187,11 +187,6 @@ open() {
 zle -N open
 bindkey "^O" open
 
-## Maker Options ##
-export MARKER_KEY_GET='\C-b'
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/sandro-levy/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
