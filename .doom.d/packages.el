@@ -69,3 +69,4 @@
 (package! visual-fill-column)
 (package! centered-window-mode)
 (package! evil-multiedit)
+(package! org-download)

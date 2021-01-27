@@ -216,6 +216,9 @@
 
 (after! org
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  (add-to-list 'org-modules 'org-habit t)
+  (add-to-list 'org-modules 'org-download t)
   (setq org-directory "~/org/"
         org-agenda-files '("~/org/"
                            "~/org/roam/journal"
@@ -231,6 +234,8 @@
         org-journal-date-prefix "#+TITLE:"
         org-journal-time-prefix "\n* "
         org-hide-emphasis-markers t
+        org-download-image-dir "~/org/roam/.pictures"
+        org-download-heading-lvl nil
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
         org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
