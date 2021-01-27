@@ -28,7 +28,7 @@
   (kbd "g <up>")    'centaur-tabs-backward-group)
 
 (after! deft
-  (setq deft-directory "~/org/")
+  (setq deft-directory "~/Dropbox/org/")
   (setq deft-recursive t))
 
 (map! :leader
@@ -200,7 +200,7 @@
 
 (map! :leader
       :desc "Edit agenda file"
-      "- a" #'(lambda () (interactive) (find-file "~/org/"))
+      "- a" #'(lambda () (interactive) (find-file "~/Dropbox/org/"))
       :leader
       :desc "Edit doom config.org"
       "- c" #'(lambda () (interactive) (find-file "~/.doom.d/config.org"))
@@ -219,22 +219,22 @@
   (add-hook 'dired-mode-hook 'org-download-enable)
   (add-to-list 'org-modules 'org-habit t)
   (add-to-list 'org-modules 'org-download t)
-  (setq org-directory "~/org/"
-        org-agenda-files '("~/org/"
-                           "~/org/roam/journal"
-                           "~/org/roam/")
+  (setq org-directory "~/Dropbox/org/"
+        org-agenda-files '("~/Dropbox/org/"
+                           "~/Dropbox/org/roam/journal"
+                           "~/Dropbox/org/roam/")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-roam-capture-templates "~/org/"
-        org-roam-dailies-directory "~/org/roam/journal"
+        org-roam-capture-templates "~/Dropbox/org/"
+        org-roam-dailies-directory "~/Dropbox/org/roam/journal"
         org-ellipsis " ▼ "
         org-log-done 'time
-        org-journal-dir "~/org/roam/journal/"
+        org-journal-dir "~/Dropbox/org/roam/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-prefix "#+TITLE:"
         org-journal-time-prefix "\n* "
         org-hide-emphasis-markers t
-        org-download-image-dir "~/org/roam/.pictures"
+        org-download-image-dir "~/Dropbox/org/roam/.pictures"
         org-download-heading-lvl nil
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -260,6 +260,9 @@
           ("WATCH" . "#ff79c6")
           ("TODO" . (:foreground "#ff5555" :weight bold))
           ("READ" . "#8be9fd")("SOMEDAY" . "#f1fa8c")("BANANA" . "8be9fd"))))    ; Task has been cancelled
+(after! org-roam
+        org-roam-directory "~/Dropbox/org/roam"
+)
 
 (defun dt/org-babel-tangle-async (file)
   "Invoke `org-babel-tangle-file' asynchronously."
@@ -284,10 +287,10 @@
 (after! org
   (defun my/generate-org-note-name ()
     (setq my-org-note--name (read-string "Name: "))
-    (expand-file-name (format "%s.org" my-org-note--name) "~/org/roam"))
+    (expand-file-name (format "%s.org" my-org-note--name) "~/Dropbox/org/roam"))
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file "~/org/roam/inbox.org")
+        '(("t" "Todo" entry (file "~/Dropbox/org/roam/inbox.org")
            "* TODO %?\n%U" :empty-lines 1)
           ("n" "Notes" plain
            (file my/generate-org-note-name)
@@ -297,7 +300,7 @@
         '(("d" "default" entry
            #'org-roam-capture--get-point
            "* %?"
-           :file-name "~/org/roam/journal/%<%Y-%m-%d>"
+           :file-name "~/Dropbox/org/roam/journal/%<%Y-%m-%d>"
            :head "#+title: %<%B %d, %Y (%A)>\n\n"))))
 
 (map! :leader

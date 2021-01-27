@@ -70,3 +70,6 @@
 (package! centered-window-mode)
 (package! evil-multiedit)
 (package! org-download)
+(package! pdf-tools)
+(package! org-noter)
+(package! org-roam)

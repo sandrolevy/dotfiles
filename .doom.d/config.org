@@ -85,7 +85,7 @@ To use tabs in Doom Emacs, be sure to uncomment "tabs" in Doom's init.el.  Displ
 * DEFT
 #+BEGIN_SRC emacs-lisp
 (after! deft
-  (setq deft-directory "~/org/")
+  (setq deft-directory "~/Dropbox/org/")
   (setq deft-recursive t))
 #+END_SRC
 
@@ -383,7 +383,7 @@ Keybindings to open files that I work with all the time using the find-file comm
 #+BEGIN_SRC emacs-lisp
 (map! :leader
       :desc "Edit agenda file"
-      "- a" #'(lambda () (interactive) (find-file "~/org/"))
+      "- a" #'(lambda () (interactive) (find-file "~/Dropbox/org/"))
       :leader
       :desc "Edit doom config.org"
       "- c" #'(lambda () (interactive) (find-file "~/.doom.d/config.org"))
@@ -407,22 +407,22 @@ Note that I wrapped most of this in (after! org).  Without this, my settings mig
   (add-hook 'dired-mode-hook 'org-download-enable)
   (add-to-list 'org-modules 'org-habit t)
   (add-to-list 'org-modules 'org-download t)
-  (setq org-directory "~/org/"
-        org-agenda-files '("~/org/"
-                           "~/org/roam/journal"
-                           "~/org/roam/")
+  (setq org-directory "~/Dropbox/org/"
+        org-agenda-files '("~/Dropbox/org/"
+                           "~/Dropbox/org/roam/journal"
+                           "~/Dropbox/org/roam/")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-roam-capture-templates "~/org/"
-        org-roam-dailies-directory "~/org/roam/journal"
+        org-roam-capture-templates "~/Dropbox/org/"
+        org-roam-dailies-directory "~/Dropbox/org/roam/journal"
         org-ellipsis " ▼ "
         org-log-done 'time
-        org-journal-dir "~/org/roam/journal/"
+        org-journal-dir "~/Dropbox/org/roam/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-prefix "#+TITLE:"
         org-journal-time-prefix "\n* "
         org-hide-emphasis-markers t
-        org-download-image-dir "~/org/roam/.pictures"
+        org-download-image-dir "~/Dropbox/org/roam/.pictures"
         org-download-heading-lvl nil
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -448,6 +448,9 @@ Note that I wrapped most of this in (after! org).  Without this, my settings mig
           ("WATCH" . "#ff79c6")
           ("TODO" . (:foreground "#ff5555" :weight bold))
           ("READ" . "#8be9fd")("SOMEDAY" . "#f1fa8c")("BANANA" . "8be9fd"))))    ; Task has been cancelled
+(after! org-roam
+        org-roam-directory "~/Dropbox/org/roam"
+)
 #+END_SRC
 
 I was tired of having to run org-babel-tangle after saving my literate dotfiles.  So the following function runs org-babel-tangle upon saving any org-mode buffer.  This is asynchronous meaning that it dispatches the tangle function to a subprocess, so that the main Emacs is not blocked while it runs.
@@ -479,10 +482,10 @@ I was tired of having to run org-babel-tangle after saving my literate dotfiles.
 (after! org
   (defun my/generate-org-note-name ()
     (setq my-org-note--name (read-string "Name: "))
-    (expand-file-name (format "%s.org" my-org-note--name) "~/org/roam"))
+    (expand-file-name (format "%s.org" my-org-note--name) "~/Dropbox/org/roam"))
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file "~/org/roam/inbox.org")
+        '(("t" "Todo" entry (file "~/Dropbox/org/roam/inbox.org")
            "* TODO %?\n%U" :empty-lines 1)
           ("n" "Notes" plain
            (file my/generate-org-note-name)
@@ -492,7 +495,7 @@ I was tired of having to run org-babel-tangle after saving my literate dotfiles.
         '(("d" "default" entry
            #'org-roam-capture--get-point
            "* %?"
-           :file-name "~/org/roam/journal/%<%Y-%m-%d>"
+           :file-name "~/Dropbox/org/roam/journal/%<%Y-%m-%d>"
            :head "#+title: %<%B %d, %Y (%A)>\n\n"))))
  #+end_src
 

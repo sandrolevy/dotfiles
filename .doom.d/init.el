@@ -149,7 +149,6 @@
        (org
         +org-bullets
         +journal
-        +roam
         +pretty
         +pomodoro)             ; organize your plain life in plain text
        php               ; perl's insecure younger brother
