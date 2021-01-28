@@ -32,11 +32,20 @@ div.button-toolbar.newtab {
 }
 
 /* TAB CONTAINER */
-#tabs-container.top {
+#tabs-tabbar-container.top {
     padding-left: 0px !important;
     padding-right: 0px !important; /* Tab bar uses entire window width */
-    padding-top: 0px !important; /* remove Vivaldi useless tab top-padding */
+    padding-top: -5px !important; /* remove Vivaldi useless tab top-padding */
     border: 0 !important; /* No border below tab bar */
+}
+.win.normal #tabs-tabbar-container.top, .linux.normal #tabs-tabbar-container.top{
+    padding-top:0px !important;
+    padding-left:0px !important;
+}
+
+.linux #tabs-container:not(.none).top {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 /* ACTIVE TAB */
