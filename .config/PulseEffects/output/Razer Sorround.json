@@ -634,7 +634,8 @@
             "loudness",
             "maximizer",
             "filter",
-            "pitch"
+            "pitch",
+            "delay"
         ],
         "bass_enhancer": {
             "state": "false",
@@ -681,7 +682,7 @@
             "sc-listen": "false"
         },
         "equalizer": {
-            "state": "true",
+            "state": "false",
             "num-bands": "10",
             "input-gain": "-2",
             "output-gain": "0",
@@ -1043,6 +1044,13 @@
             "weight-m": "1",
             "weight-s": "1",
             "weight-i": "1"
+        },
+        "delay": {
+            "state": "false",
+            "input-gain": "0",
+            "output-gain": "0",
+            "time-l": "0",
+            "time-r": "0"
         }
     }
 }
