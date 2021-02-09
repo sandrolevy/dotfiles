@@ -15,6 +15,8 @@ case ${TERM} in
     ;;
 esac
 
+eval "$(starship init zsh)"
+
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
 ex ()
@@ -46,7 +48,7 @@ ex ()
 export ZSH="/home/sandro-levy/.oh-my-zsh"
 
 # Set name of the theme to load
-ZSH_THEME="spaceship"
+#ZSH_THEME="spaceship"
 
 # navigation
 alias ..='cd ..' 
