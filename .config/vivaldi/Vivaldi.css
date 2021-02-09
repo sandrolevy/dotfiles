@@ -32,6 +32,9 @@ div.button-toolbar.newtab {
 }
 
 /* TAB CONTAINER */
+.win.normal #tabs-container.top, .linux.normal #tabs-container.top{
+    padding-top: 0px !important;
+}
 #tabs-tabbar-container.top {
     padding-left: 0px !important;
     padding-right: 0px !important; /* Tab bar uses entire window width */
