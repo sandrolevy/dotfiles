@@ -2415,6 +2415,7 @@ headerbar {
     border-radius: 0;
     text-shadow: none;
     box-shadow: none;
+    border: none;
     min-height: 34px; }
     .titlebar:not(headerbar) button:hover,
     headerbar button:hover {
@@ -2429,6 +2430,7 @@ headerbar {
       color: #bd93f9;
       background-color: transparent;
       border-radius: 0;
+      box-shadow: none;
       text-shadow: none;
       font-weight: bold; }
     .titlebar:not(headerbar) button:backdrop, .titlebar:not(headerbar) button:disabled, .titlebar:not(headerbar) button:backdrop:disabled,
@@ -2816,8 +2818,8 @@ window.csd > .titlebar:not(headerbar) {
   border-color: transparent;
   box-shadow: none; }
 
-.titlebar:not(headerbar) > separator {
-  background: transparent; }
+.titlebar:not(headerbar) > separator, .titlebar:not(headerbar) > separator:backdrop {
+  background: #1e1f29; }
 
 /**************
  * GtkInfoBar *
@@ -5716,6 +5718,7 @@ window.background.budgie-settings-window.csd > box.horizontal > stack > scrolled
   color: #bd93f9;
   background-color: transparent;
   border-radius: 0;
+  box-shadow: none;
   text-shadow: none;
   font-weight: bold; }
   .nautilus-window .path-bar-box widget > .text-button:last-child:backdrop label {
@@ -5728,6 +5731,7 @@ window.background.budgie-settings-window.csd > box.horizontal > stack > scrolled
     color: rgba(189, 147, 249, 0.5);
     background-color: transparent;
     border-radius: 0;
+    box-shadow: none;
     text-shadow: none;
     font-weight: bold; }
     .nautilus-window .path-bar-box button:backdrop:hover label, .nautilus-window .path-bar-box button:backdrop:active label, .nautilus-window .path-bar-box button:backdrop:checked label {
@@ -6337,3 +6341,92 @@ ConversationListView {
 #greeter_infobar {
   border-bottom-width: 0;
   font-weight: bold; }
+
+/* thunar */
+.thunar toolbar {
+  background-color: #1e1f29; }
+
+/* buttons in toolbar */
+.thunar toolbar.horizontal button image {
+  -gtk-icon-transform: scale(0.72); }
+
+scrolledwindow.sidebar treeview.view {
+  background: #282a36;
+  padding: 1.5px;
+  border: none;
+  box-shadow: none; }
+
+/* path-bar of thunar */
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:hover, window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:checked, window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:selected, window.thunar paned > scrolledwindow treeview.view:hover, window.thunar paned > scrolledwindow treeview.view:checked, window.thunar paned > scrolledwindow treeview.view:selected {
+  background-color: none;
+  color: #bd93f9;
+  box-shadow: none; }
+
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:checked:backdrop label, window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:selected:backdrop label, window.thunar paned > scrolledwindow treeview.view:checked:backdrop label, window.thunar paned > scrolledwindow treeview.view:selected:backdrop label {
+  color: rgba(189, 147, 249, 0.4); }
+
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.path-bar-button {
+  background: none;
+  outline: none;
+  border: none;
+  box-shadow: none; }
+
+.nemo-window .places-treeview {
+  -NemoPlacesTreeView-disk-full-bg-color: #07080a;
+  -NemoPlacesTreeView-disk-full-fg-color: #f1fa8c;
+  -GtkTreeView-vertical-separator: 7; }
+  .nemo-window .places-treeview .view.cell:hover, .nemo-window .places-treeview iconview.cell:hover, .nemo-window .places-treeview .view.cell:selected, .nemo-window .places-treeview iconview.cell:selected,
+  .nemo-window .places-treeview iconview.cell:hover,
+  .nemo-window .places-treeview iconview.cell:selected {
+    color: #bd93f9;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: bold; }
+
+.nemo-window .sidebar {
+  color: #f8f8f2;
+  background-color: #282a36; }
+  .nemo-window .sidebar .view, .nemo-window .sidebar iconview, .nemo-window .sidebar .iconview, .nemo-window .sidebar row {
+    background-color: transparent; }
+
+.nemo-window .nemo-window-pane widget.entry {
+  background-clip: padding-box;
+  min-height: 28px;
+  padding: 5px;
+  color: #f8f8f2;
+  border: 1px solid rgba(25, 26, 34, 0.9);
+  border-radius: 3px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.9), inset 1px 0 rgba(0, 0, 0, 0.96), inset -1px 0 rgba(0, 0, 0, 0.96), inset 0 -1px rgba(0, 0, 0, 0.98), 0 1px rgba(255, 255, 255, 0.6); }
+  .nemo-window .nemo-window-pane widget.entry:selected {
+    background-color: rgba(189, 147, 249, 0.5);
+    color: #f8f8f2; }
+
+.nemo-window toolbar.primary-toolbar {
+  margin-bottom: -1px;
+  background: #1e1f29; }
+  .nemo-window toolbar.primary-toolbar button {
+    color: #f8f8f2;
+    background-color: transparent;
+    border-radius: 0;
+    text-shadow: none;
+    box-shadow: none;
+    border: none;
+    min-height: 24px;
+    padding: 3px; }
+    .nemo-window toolbar.primary-toolbar button:hover {
+      color: #bd93f9;
+      background-color: transparent;
+      border-radius: 0;
+      text-shadow: none;
+      box-shadow: none; }
+    .nemo-window toolbar.primary-toolbar button:selected, .nemo-window toolbar.primary-toolbar button:active, .nemo-window toolbar.primary-toolbar button:checked {
+      color: #bd93f9;
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      text-shadow: none;
+      font-weight: bold; }
+      .nemo-window toolbar.primary-toolbar button:selected:backdrop, .nemo-window toolbar.primary-toolbar button:selected:backdrop label, .nemo-window toolbar.primary-toolbar button:active:backdrop, .nemo-window toolbar.primary-toolbar button:active:backdrop label, .nemo-window toolbar.primary-toolbar button:checked:backdrop, .nemo-window toolbar.primary-toolbar button:checked:backdrop label {
+        color: rgba(189, 147, 249, 0.4); }
