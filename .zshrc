@@ -69,7 +69,7 @@ alias doompurge="~/.emacs.d/bin/doom purge"
 alias fd=fdfind
 
 # Changing "ls" to "exa"
-alias es='exa -al --color=always --group-directories-first' # my preferred listing
+alias ls='exa -al --color=always --group-directories-first' # my preferred listing
 alias ea='exa -a --color=always --group-directories-first'  # all files and dirs
 alias el='exa -l --color=always --group-directories-first'  # long format
 alias et='exa -aT --color=always --group-directories-first' # tree listing
@@ -206,3 +206,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 colorscript random
+export PATH=$HOME/.config/rofi/bin:$PATH

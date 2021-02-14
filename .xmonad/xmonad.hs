@@ -89,7 +89,7 @@ myTerminal :: String
 myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "vivaldi"               -- Sets qutebrowser as browser for tree select
+myBrowser = "vivaldi-stable"               -- Sets Vivaldi as browser for tree select
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
 myEditor :: String
@@ -97,13 +97,13 @@ myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
 -- myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor for tree select
 
 myBorderWidth :: Dimension
-myBorderWidth = 1          -- Sets border width for windows
+myBorderWidth = 3          -- Sets border width for windows
 
 myNormColor :: String
-myNormColor   = "#282c34"  -- Border color of normal windows
+myNormColor   = "#262a36"  -- Border color of normal windows
 
 myFocusColor :: String
-myFocusColor  = "#46d9ff"  -- Border color of focused windows
+myFocusColor  = "#50fa7b"  -- Border color of focused windows
 
 altMask :: KeyMask
 altMask = mod1Mask         -- Setting this for use in xprompts
@@ -115,11 +115,12 @@ myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "lxsession &"
           spawnOnce "nitrogen --restore &"
-          spawnOnce "compton"
+	  spawnOnce "kcminit"
+          spawnOnce "setxkbmap -layout br"
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
           spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
-          spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
+          -- spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
           -- spawnOnce "kak -d -s mysession &"  -- kakoune daemon for better performance
           -- spawnOnce "urxvtd -q -o -f &"      -- urxvt daemon for better performance
           setWMName "LG3D"
@@ -338,14 +339,14 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 2
+           $ mySpacing 3
            $ ResizableTall 1 (3/100) (1/2) []
 magnify  = renamed [Replace "magnify"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ magnifier
            $ limitWindows 12
            $ mySpacing 2
@@ -353,17 +354,17 @@ magnify  = renamed [Replace "magnify"]
 monocle  = renamed [Replace "monocle"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 20 Full
 floats   = renamed [Replace "floats"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 20 simplestFloat
 grid     = renamed [Replace "grid"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
            $ mySpacing 2
            $ mkToggle (single MIRROR)
@@ -371,20 +372,20 @@ grid     = renamed [Replace "grid"]
 spirals  = renamed [Replace "spirals"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ mySpacing' 2
            $ spiral (6/7)
 threeCol = renamed [Replace "threeCol"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 7
            $ mySpacing' 2
            $ ThreeCol 1 (3/100) (1/2)
 threeRow = renamed [Replace "threeRow"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 7
            $ mySpacing' 2
            -- Mirror takes a layout and rotates it by 90 degrees.
@@ -419,15 +420,15 @@ myShowWNameTheme = def
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
-               myDefaultLayout =     tall
-                                 ||| magnify
+               myDefaultLayout =     smartBorders tall
+                                 ||| smartBorders magnify
                                  ||| noBorders monocle
-                                 ||| floats
+                                 ||| smartBorders floats
                                  ||| noBorders tabs
-                                 ||| grid
-                                 ||| spirals
-                                 ||| threeCol
-                                 ||| threeRow
+                                 ||| smartBorders grid
+                                 ||| smartBorders spirals
+                                 ||| smartBorders threeCol
+                                 ||| smartBorders threeRow
 
 myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
@@ -452,13 +453,13 @@ myManageHook = composeAll
      -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
-     [ title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
+     [ className  =? "Vivaldi-stable"     --> doShift ( myWorkspaces !! 1 )
      , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
      , className =? "Gimp"    --> doFloat
      , title =? "Oracle VM VirtualBox Manager"     --> doFloat
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
-     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , (className =? "Vivaldi-stable" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      ] <+> namedScratchpadManageHook myScratchPads
 
 myLogHook :: X ()
@@ -488,11 +489,13 @@ myKeys home =
         , ("M-p x", xmonadPrompt dtXPConfig)       -- xmonadPrompt
         , ("M-p q", scrotPrompt home True)         -- scrotPrompt True
         , ("M-p z", scrotPrompt home False)        -- scrotPrompt False
+        , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10 && timeout 0.5s  $HOME/.config/rofi/bin/applet_backlight")
+        , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10 && timeout 0.5s $HOME/.config/rofi/bin/applet_backlight")
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn (myTerminal))
+        , ("M-<Return>", spawn (myTerminal ++ " -e zsh"))
         , ("M-b", spawn (myBrowser))
-        , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
+        , ("C-S-<Esc>", spawn (myTerminal ++ " -e htop"))
         , ("M-e", spawn (myEditor))
 
     -- Kill windows
@@ -511,16 +514,15 @@ myKeys home =
         , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
     -- Increase/decrease spacing (gaps)
-        , ("M-d", decWindowSpacing 4)           -- Decrease window spacing
-        , ("M-i", incWindowSpacing 4)           -- Increase window spacing
-        , ("M-S-d", decScreenSpacing 4)         -- Decrease screen spacing
-        , ("M-S-i", incScreenSpacing 4)         -- Increase screen spacing
+        , ("M-d", decWindowSpacing 1)           -- Decrease window spacing
+        , ("M-i", incWindowSpacing 1)           -- Increase window spacing
+        , ("M-S-d", decScreenSpacing 1)         -- Decrease screen spacing
+        , ("M-S-i", incScreenSpacing 1)         -- Increase screen spacing
 
     -- Grid Select (CTR-g followed by a key)
         , ("C-<Space>", spawnSelected' myAppGrid)                 -- grid select favorite apps
         , ("C-g t", goToSelected $ mygridConfig myColorizer)  -- goto selected window
         , ("C-g b", bringSelected $ mygridConfig myColorizer) -- bring selected window
-
 
     -- Windows navigation
         , ("M-m", windows W.focusMaster)  -- Move focus to the master window
@@ -600,7 +602,7 @@ myKeys home =
         , ("<XF86Mail>", runOrRaise "thunderbird" (resource =? "thunderbird"))
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
         , ("<XF86Eject>", spawn "toggleeject")
-        , ("<Print>", spawn "scrotd 0")
+        , ("<Print>", spawn "flameshot gui")
         ]
     -- Appending search engine prompts to keybindings list.
     -- Look at "search engines" section of this config for values for "k".
@@ -639,11 +641,11 @@ main = do
         , focusedBorderColor = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                        , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#98be65" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#c792ea" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#b3afc2" "" . shorten 60     -- Title of active window in xmobar
+                        , ppCurrent = xmobarColor "#50fa7b" "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "#ff79c6" ""                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "#f1fa8c" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#ff79c6" ""        -- Hidden workspaces (no windows)
+                        , ppTitle = xmobarColor "#f8f8f8" "" . shorten 60     -- Title of active window in xmobar
                         , ppSep =  "<fc=#666666> <fn=1>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace

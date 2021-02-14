@@ -6,29 +6,60 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
        , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=11:antialias=true:hinting=true"
                            , "xft:FontAwesome:pixelsize=13"
                            ]
-       , bgColor = "#262a36"
-       , fgColor = "#ff6c6b"
-       , position = Static { xpos = 0 , ypos = 0, width = 1366, height = 24 }
+       , bgColor = "#262c36"
+       , fgColor = "#ff5555"
+       , position = Static { xpos = 0, ypos = 0, width = 1366, height = 24 }
        , lowerOnStart = True
        , hideOnStart = False
        , allDesktops = True
        , persistent = True
        , commands = [
+		    -- Audio and Volume Status
+                    Run Alsa "default" "Master" [
+                          "--template" , "<status>"
+                          , "--"
+                          , "-c" , "#bd93f9" --color when off
+                          , "-C" , "#50fa7b" --color when on
+                          , "-O", " <volume>%" -- mixer on
+                          , "-o", "<fn=1>\xfa80</fn> muted" -- mixer off or muted
+                          , "--highs", "<fn=1>\xf028 </fn>"
+                          , "--mediums", "<fn=1>\xfa7d </fn>"
+                          , "--lows", "<fn=1>\xf027 </fn>"
+                        ]
+ 		   ,  Run Battery
+                       [ "--template" , "<acstatus>"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "#ff5555"
+                             , "--normal"   , "#f1fa8c"
+                             , "--high"     , "#50fa7b"
+                             , "--" -- battery specific options
+                                       -- discharging status - use icons
+                                       , "-l"   ,  "#BF616A"
+                                       , "-m"   ,  "#EBCB8B"
+                                       , "-h"   ,  "#A3BE8C"
+                                       , "-o"   , ""
+                                       , "--lows"     , "<fn=1>\xf57a </fn><left>%"
+                                       , "--mediums"  , "<fn=1>\xf57e </fn><left>%"
+                                       , "--highs"    , "<fn=1>\xf581 </fn><left>%"
+                                       -- AC "on" status
+                                       , "-O"  , "<fn=1>\xf588 </fn><left>%"
+                                       -- charged status
+                                       , "-i"  , "<fn=1>\xf583 </fn>FULL"
+                                       , "-a", "notify-send -u critical 'Battery running out!!'"
+                                       , "-A", "20"
+                             ] 20
+                    ,  Run Locks
                     -- Time and date
-                      Run Date "<fn=1>\xf133 </fn>  %b %d %Y - (%H:%M) " "date" 50
+                    ,  Run Date "<fn=1>\xf271 </fn> %b %d %Y - (%H:%M) " "date" 50
                       -- Network up and down
-                    , Run Network "enp6s0" ["-t", "<fn=1>\xf0aa</fn>  <rx>kb  <fn=1>\xf0ab</fn>  <tx>kb"] 20
-                      -- Cpu usage in percent
-                    , Run Cpu ["-t", "<fn=1>\xf108 </fn>  cpu: (<total>%)","-H","50","--high","red"] 20
+                    , Run Cpu ["-t", "<fn=1>\xf108 </fn> cpu: (<total>%)","-H","70","--high","#ff5555"] 20
                       -- Ram used number and percent
-                    , Run Memory ["-t", "<fn=1>\xf233 </fn>  mem: <used>M (<usedratio>%)"] 20
+                    , Run Memory ["-t", "<fn=1>\xf233 </fn> mem: <used>M (<usedratio>%)"] 20
                       -- Disk space free
-                    , Run DiskU [("/", "<fn=1>\xf0c7 </fn>  hdd: <free> free")] [] 60
+                    , Run DiskU [("/", "<fn=1>\xf0c7 </fn> hdd: <free> free")] [] 60
                       -- Runs custom script to check for pacman updates.
                       -- This script is in my dotfiles repo in .local/bin.
-                    , Run Com "/home/dt/.local/bin/pacupdate" [] "pacupdate" 36000
-                      -- Runs a standard shell command 'uname -r' to get kernel version
-                    , Run Com "uname" ["-r"] "" 3600
                     , Run Com "/home/sandro-levy/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                       -- Prints out the left side items such as workspaces, layout, etc.
                       -- The workspaces are 'clickable' in my configs.
@@ -36,5 +67,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#666666>|</fc> <fc=#ecbe7b> %cpu% </fc><fc=#666666> |</fc> <fc=#ff6c6b> %memory% </fc><fc=#666666> |</fc> <fc=#51afef> %disku% </fc><fc=#666666>|</fc> <fc=#46d9ff> %date%  </fc>"
+       , template = " %UnsafeStdinReader% }{<fc=#ff79c6>%locks% </fc><fc=#666666> |</fc><fc=#8be9fd> %cpu% </fc><fc=#666666> |</fc> <fc=#ff5555> %memory% </fc><fc=#666666> |</fc> <fc=#f1fa8c> %disku% </fc><fc=#666666> |</fc><fc=#50fa7b> %alsa:default:Master% </fc><fc=#666666> |</fc><fc=#8be9fd> %battery% </fc><fc=#666666> |</fc><fc=#ffb86c> %date%</fc><fc=#666666><fn=1>|</fn></fc>%trayerpad%"
        }
