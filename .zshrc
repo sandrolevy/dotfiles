@@ -66,7 +66,7 @@ alias doomupgrade="~/.emacs.d/bin/doom upgrade"
 alias doompurge="~/.emacs.d/bin/doom purge"
 
 # FD FIND
-alias fd=fdfind
+alias fdfind=fd
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -168,8 +168,8 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 --bind 'ctrl-v:execute(code {+})'
 "
-export FZF_CTRL_T_COMMAND='command fdfind --hidden --no-ignore --ignore-case . $HOME'
-export FZF_ALT_C_COMMAND='command fdfind --hidden --no-ignore --ignore-case -t d . $HOME'
+export FZF_CTRL_T_COMMAND='command fd --hidden --no-ignore --ignore-case . $HOME'
+export FZF_ALT_C_COMMAND='command fd --hidden --no-ignore --ignore-case -t d . $HOME'
 
 # Remove keybinds
 bindkey -r "^[c"  # fzf-cd-widget
@@ -181,7 +181,7 @@ bindkey  "^F"  fzf-file-widget
 
 ## SET TO OPEN FILES WITH FZF ##
 open() {
-  IFS=$'\n' out=("$(fdfind . $HOME|fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  IFS=$'\n' out=("$(fd . $HOME|fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
   key=$(head -1 <<< "$out")
   file=$(head -2 <<< "$out" | tail -1)
   xdg-open "$file">/dev/null 2>&1

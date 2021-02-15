@@ -489,8 +489,8 @@ myKeys home =
         , ("M-p x", xmonadPrompt dtXPConfig)       -- xmonadPrompt
         , ("M-p q", scrotPrompt home True)         -- scrotPrompt True
         , ("M-p z", scrotPrompt home False)        -- scrotPrompt False
-        , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10 && timeout 0.5s  $HOME/.config/rofi/bin/applet_backlight")
-        , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10 && timeout 0.5s $HOME/.config/rofi/bin/applet_backlight")
+        , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10 && timeout 1s  $HOME/.config/rofi/bin/applet_backlight")
+        , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10 && timeout 1s $HOME/.config/rofi/bin/applet_backlight")
 
     -- Useful programs to have a keybinding for launch
         , ("M-<Return>", spawn (myTerminal ++ " -e zsh"))
@@ -645,7 +645,7 @@ main = do
                         , ppVisible = xmobarColor "#ff79c6" ""                -- Visible but not current workspace
                         , ppHidden = xmobarColor "#f1fa8c" "" . wrap "*" ""   -- Hidden workspaces in xmobar
                         , ppHiddenNoWindows = xmobarColor "#ff79c6" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#f8f8f8" "" . shorten 60     -- Title of active window in xmobar
+                        , ppTitle = xmobarColor "#f8f8f8" "" . shorten 30     -- Title of active window in xmobar
                         , ppSep =  "<fc=#666666> <fn=1>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace

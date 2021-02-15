@@ -46,9 +46,9 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                                        , "-O"  , "<fn=1>\xf588 </fn><left>%"
                                        -- charged status
                                        , "-i"  , "<fn=1>\xf583 </fn>FULL"
-                                       , "-a", "notify-send -u critical 'Battery running out!!'"
+                                       , "-a", "/home/sandro-levy/.config/rofi/bin/battery_notify.sh"
                                        , "-A", "20"
-                             ] 20
+                             ] 10
                     ,  Run Locks
                     -- Time and date
                     ,  Run Date "<fn=1>\xf271 </fn> %b %d %Y - (%H:%M) " "date" 50
