@@ -143,7 +143,7 @@
       :desc "Search web for text between BEG/END"
       "s w" #'eww-search-words)
 
-(setq doom-font (font-spec :family "iA Writer Mono S" :size 15)
+(setq doom-font (font-spec :family "iA Writer Mono S" :size 16)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "iA Writer Mono S" :size 24))
 (after! doom-themes
@@ -219,22 +219,22 @@
   (add-hook 'dired-mode-hook 'org-download-enable)
   (add-to-list 'org-modules 'org-habit t)
   (add-to-list 'org-modules 'org-download t)
-  (setq org-directory "~/Dropbox/org/"
-        org-agenda-files '("~/Dropbox/org/"
-                           "~/Dropbox/org/roam/journal"
-                           "~/Dropbox/org/roam/")
+  (setq org-directory "/home/sandro-levy/Dropbox/org/"
+        org-agenda-files '("/home/sandro-levy/Dropbox/org/"
+                           "/home/sandro-levy/Dropbox/org/roam/journal"
+                           "/home/sandro-levy/Dropbox/org/roam/")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-roam-capture-templates "~/Dropbox/org/"
-        org-roam-dailies-directory "~/Dropbox/org/roam/journal"
+        org-roam-capture-templates "/home/sandro-levy/Dropbox/org/"
+        org-roam-dailies-directory "/home/sandro-levy/Dropbox/org/roam/journal"
         org-ellipsis " ▼ "
         org-log-done 'time
-        org-journal-dir "~/Dropbox/org/roam/journal/"
+        org-journal-dir "/home/sandro-levy/Dropbox/org/roam/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-prefix "#+TITLE:"
         org-journal-time-prefix "\n* "
         org-hide-emphasis-markers t
-        org-download-image-dir "~/Dropbox/org/roam/.pictures"
+        org-download-image-dir "/home/sandro-levy/Dropbox/org/roam/.pictures"
         org-download-heading-lvl nil
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -261,8 +261,8 @@
           ("TODO" . (:foreground "#ff5555" :weight bold))
           ("READ" . "#8be9fd")("SOMEDAY" . "#f1fa8c")("BANANA" . "8be9fd"))))    ; Task has been cancelled
 (after! org-roam
-        org-roam-directory "~/Dropbox/org/roam"
-)
+        (setq org-roam-directory "~/Dropbox/org/roam")
+  )
 
 (defun dt/org-babel-tangle-async (file)
   "Invoke `org-babel-tangle-file' asynchronously."
