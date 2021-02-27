@@ -113,12 +113,11 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-          spawnOnce "lxsession &"
+          spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
           spawnOnce "nitrogen --restore &"
 	  spawnOnce "kcminit"
           spawnOnce "setxkbmap -layout br"
           spawnOnce "nm-applet &"
-          spawnOnce "volumeicon &"
           spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
           -- spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
           -- spawnOnce "kak -d -s mysession &"  -- kakoune daemon for better performance
@@ -471,10 +470,10 @@ myKeys home =
     -- Xmonad
         [ ("M-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
-        , ("M-S-q", io exitSuccess)             -- Quits xmonad
+        , ("M-S-q", spawn "$HOME/.config/rofi/bin/menu_powermenu")             -- Quits xmonad
 
     -- Run Prompt
-        , ("M-S-<Return>", shellPrompt dtXPConfig) -- Xmonad Shell Prompt
+        , ("C-<Space>", shellPrompt dtXPConfig) -- Xmonad Shell Prompt
         -- , ("M-S-<Return>", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
         -- , ("M-S-<Return>", spawn "rofi -show drun -config ~/.config/rofi/themes/dt-dmenu.rasi -display-drun \"Run: \" -drun-display-format \"{name}\"") -- Rofi
 
@@ -497,6 +496,7 @@ myKeys home =
         , ("M-b", spawn (myBrowser))
         , ("C-S-<Esc>", spawn (myTerminal ++ " -e htop"))
         , ("M-e", spawn (myEditor))
+        , ("M-f", spawn (myTerminal ++ " -e vifm"))
 
     -- Kill windows
         , ("M-q", kill1)     -- Kill the currently focused client
@@ -509,7 +509,7 @@ myKeys home =
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
 
     -- Floating windows
-        , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
+        , ("M-g", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
         , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
         , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
@@ -520,7 +520,7 @@ myKeys home =
         , ("M-S-i", incScreenSpacing 1)         -- Increase screen spacing
 
     -- Grid Select (CTR-g followed by a key)
-        , ("C-<Space>", spawnSelected' myAppGrid)                 -- grid select favorite apps
+        , ("C-g g", spawnSelected' myAppGrid)                 -- grid select favorite apps
         , ("C-g t", goToSelected $ mygridConfig myColorizer)  -- goto selected window
         , ("C-g b", bringSelected $ mygridConfig myColorizer) -- bring selected window
 
@@ -602,7 +602,7 @@ myKeys home =
         , ("<XF86Mail>", runOrRaise "thunderbird" (resource =? "thunderbird"))
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
         , ("<XF86Eject>", spawn "toggleeject")
-        , ("<Print>", spawn "flameshot gui")
+        , ("<Print>", spawn "gnome-screenshot -ac")
         ]
     -- Appending search engine prompts to keybindings list.
     -- Look at "search engines" section of this config for values for "k".
