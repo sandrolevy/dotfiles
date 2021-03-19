@@ -20,18 +20,6 @@
 
 <p align="center">Some of my personal configs for unix based system</p>
 
-|ALACRITTY|CMUS|VIFM|
-|-|-|-|
-|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/applets/main.gif)|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/menu/main.gif)|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/android/main.gif)|
-
-|EMACS|XMONAD|XMOBAR|
-|-|-|-|
-|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/powermenu/main.gif)|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/colorful/main.gif)|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/misc/main.gif)|
-
-|STARSHIP|BASH|ZSH|
-|-|-|-|
-|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/ribbon/main.gif)|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/text/main.gif)|![img](https://raw.githubusercontent.com/adi1090x/files/master/rofi/previews/slate/main.gif)|
-
 ## WHAT ARE DOTFILES?
 
 Dotfiles are the customization files that are used to personalize your Linux or other Unix-based system.  You can tell that a file is a dotfile because the name of the file will begin with a period–a dot!  The period at the beginning of a filename or directory name indicates that it is a hidden file or directory.  This repository contains my personal dotfiles.  They are stored here for convenience so that I may quickly access them on new machines or new installs.  Also, others may find some of my configurations helpful in customizing their own dotfiles.
