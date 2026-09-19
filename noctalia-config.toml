@@ -1,0 +1,337 @@
+[bar]
+order = [ "default", "bar" ]
+
+    [bar.bar]
+    capsule = true
+    center = [
+        "clock",
+        "btn",
+        "bar",
+        "status",
+        "widget_2",
+        "bar_2",
+        "wallhaven",
+        "bar_3",
+        "widget_3",
+        "widget_4",
+        "status_2",
+        "status_3"
+    ]
+    enabled = true
+    margin_ends = 0
+    radius = 0
+    start = [ "launcher", "wallpaper", "workspaces", "widget", "launcher_2", "monitor", "file-search", "now-playing" ]
+
+    [bar.default]
+    enabled = false
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
+width = 1000
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-2", "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@HDMI-A-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-A-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugin_settings."alexander/game-launcher"]
+browser_position = "top_center"
+
+[plugin_settings."aristides/udiskie"]
+manager_position = "top_center"
+
+[plugin_settings."baizhu/paged-todo"]
+panel_placement = "floating"
+panel_position = "top_center"
+
+[plugin_settings."blackbartblues/audio-switcher"]
+audio-switcher_open_near_click = false
+audio-switcher_placement = "floating"
+audio-switcher_position = "top_center"
+
+[plugin_settings."nightwatch75/file-search"]
+panel_layer = "overlay"
+panel_open_near_click = false
+panel_placement = "floating"
+panel_position = "top_center"
+
+[plugin_settings."nightwatch75/todo"]
+panel_placement = "floating"
+panel_position = "top_center"
+
+[plugin_settings."noctalia/wallhaven"]
+browser_placement = "floating"
+browser_position = "top_center"
+
+[plugin_settings."noctalia/wallpaper_depth"]
+manager_placement = "floating"
+manager_position = "top_center"
+
+[plugin_settings."nomadcxx/gamer-mode"]
+main_placement = "floating"
+main_position = "top_center"
+
+[plugin_settings."thepunkoff/pomodoro"]
+long-break-duration = 20
+panel_placement = "floating"
+panel_position = "top_center"
+short-break-duration = 10
+work-duration = 50
+
+[plugin_settings."tiobaka/vm-manager"]
+manager_placement = "floating"
+manager_position = "top_center"
+
+[plugin_settings."tordex/system-updater"]
+enable_cargo = false
+enable_gearlever = false
+enable_pipx = false
+enable_xbps = false
+panel_open_near_click = false
+panel_placement = "floating"
+panel_position = "top_center"
+
+[plugin_settings."tranzem/media-lyrics"]
+panel_position = "top_center"
+
+[plugin_settings."weinguyen/procmon"]
+panel_position = "top_center"
+
+[plugins]
+enabled = [
+    "blackbartblues/audio-switcher",
+    "alexander/game-launcher",
+    "nomadcxx/gamer-mode",
+    "tranzem/media-lyrics",
+    "baizhu/paged-todo",
+    "thepunkoff/pomodoro",
+    "weinguyen/procmon",
+    "tordex/system-updater",
+    "aristides/udiskie",
+    "tiobaka/vm-manager",
+    "aabidk20/yt-music",
+    "noctalia/wallpaper_depth",
+    "noctalia/wallhaven"
+]
+
+[shell]
+font_family = "Adwaita Mono"
+polkit_agent = true
+screen_time_enabled = true
+
+    [shell.launcher]
+    categories = false
+    compact = true
+
+    [shell.panel]
+    clipboard_position = "top_center"
+    control_center_placement = "floating"
+    session_placement = "floating"
+    session_position = "top_center"
+    wallpaper_placement = "floating"
+    wallpaper_position = "top_center"
+
+    [shell.screen_corners]
+    size = 1
+
+    [shell.session]
+    grid = true
+
+        [[shell.session.actions]]
+        action = "lock"
+        countdown_seconds = 0.0
+        enabled = false
+        shortcut = "1"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "logout"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "2"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "lock_and_suspend"
+        countdown_seconds = 0.0
+        enabled = false
+        shortcut = "3"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "reboot"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "4"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "shutdown"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "5"
+        variant = "destructive"
+
+[theme]
+builtin = "Eldritch"
+community_palette = "Tokyo Night Moon"
+source = "builtin"
+wallpaper_scheme = "m3-tonal-spot"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "gtk3", "gtk4" ]
+    community_ids = [ "rofi", "fzf" ]
+
+[wallpaper.default]
+path = "/home/levy/Pictures/john-towner-JgOeRuGD_Y4-unsplash.jpg"
+
+[wallpaper.last]
+path = "/home/levy/Pictures/john-towner-JgOeRuGD_Y4-unsplash.jpg"
+
+[wallpaper.monitors.HDMI-A-1]
+path = "/home/levy/Pictures/john-towner-JgOeRuGD_Y4-unsplash.jpg"
+
+[widget.bar]
+type = "prponkshe/mango-displays:bar"
+
+[widget.bar_2]
+type = "noctalia/wallpaper_depth:bar"
+
+[widget.bar_3]
+type = "baizhu/paged-todo:bar"
+
+[widget.btn]
+type = "ezequiel/mango_layouts:btn"
+
+[widget.file-search]
+type = "nightwatch75/file-search:file-search"
+
+[widget.launcher_2]
+type = "alexander/game-launcher:launcher"
+
+[widget.monitor]
+highlight_gamer_mode = false
+type = "nomadcxx/gamer-mode:monitor"
+
+[widget.now-playing]
+artist_first = true
+font_weight = 400
+scale = 1.1000000000000001
+title_scroll = "always"
+type = "tranzem/media-lyrics:now-playing"
+
+[widget.status]
+type = "tiobaka/vm-manager:status"
+
+[widget.status_2]
+type = "tordex/system-updater:status"
+
+[widget.status_3]
+type = "aristides/udiskie:status"
+
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"
+
+[widget.widget]
+type = "blackbartblues/audio-switcher:widget"
+
+[widget.widget_2]
+type = "aabidk20/yt-music:widget"
+
+[widget.widget_3]
+enabled = false
+type = "thepunkoff/pomodoro:widget"
+
+[widget.widget_4]
+enabled = false
+type = "weinguyen/procmon:widget"
