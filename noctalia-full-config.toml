@@ -24,40 +24,14 @@ order = [ "default", "bar" ]
     border_width = 0.0
     capsule = true
     capsule_fill = "surface_variant"
-    capsule_group = []
     capsule_opacity = 1.0
     capsule_padding = 6.0
     capsule_thickness = 0.75999999046325684
-    center = [
-        "clock",
-        "btn",
-        "bar",
-        "status",
-        "widget_2",
-        "bar_2",
-        "wallhaven",
-        "bar_3",
-        "widget_3",
-        "widget_4",
-        "status_2",
-        "status_3"
-    ]
+    center = [ "weather", "group:g1", "group:g3", "bar_2", "wallhaven", "widget_4" ]
     concave_edge_corners = true
     contact_shadow = false
     enabled = true
-    end = [
-        "media",
-        "tray",
-        "notifications",
-        "clipboard",
-        "network",
-        "bluetooth",
-        "volume",
-        "brightness",
-        "battery",
-        "control-center",
-        "session"
-    ]
+    end = [ "group:g5", "group:g4", "network", "widget", "session" ]
     font_scale = 1.0
     font_weight = 500
     hover_highlight = true
@@ -78,11 +52,64 @@ order = [ "default", "bar" ]
     shadow = true
     show_on_workspace_switch = true
     smart_auto_hide = false
-    start = [ "launcher", "wallpaper", "workspaces", "widget", "launcher_2", "monitor", "file-search", "now-playing" ]
+    start = [ "launcher", "toggle", "group:g2", "monitor", "spacer_2" ]
     thickness = 34
     widget_spacing = 6
 
         [bar.bar.dead_zone]
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g2"
+        members = [ "widget_2", "now-playing" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g1"
+        members = [ "date", "clock" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g3"
+        members = [ "bar_3", "widget_3" ]
+        opacity = 1.0
+        padding = 6.0
+        widget_spacing = 0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "start"
+        enabled = true
+        fill = "surface_variant"
+        id = "g4"
+        members = [ "status_3", "bluetooth", "status_2", "clipboard", "notifications" ]
+        opacity = 1.0
+        padding = 6.0
+        widget_spacing = 8
+
+        [[bar.bar.capsule_group]]
+        accordion = true
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g5"
+        members = [ "custom_button_2", "tray", "status" ]
+        opacity = 1.0
+        padding = 6.0
+        widget_spacing = 10
 
     [bar.default]
     auto_hide = false
@@ -334,12 +361,45 @@ wallpaper = ""
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-2", "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@HDMI-A-1" ]
+widget_order = [
+    "lockscreen-login-box@FALLBACK",
+    "lockscreen-login-box@HDMI-2",
+    "lockscreen-login-box@HDMI-A-2",
+    "lockscreen-login-box@HDMI-A-1"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    enabled = true
+    output = "FALLBACK"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-2"]
     box_height = 196.0
@@ -555,7 +615,10 @@ enabled = [
     "tiobaka/vm-manager",
     "aabidk20/yt-music",
     "noctalia/wallpaper_depth",
-    "noctalia/wallhaven"
+    "noctalia/wallhaven",
+    "profidev/hypr-screen-mirror",
+    "maddingo/hypr-layout-switcher",
+    "kenn/keybind-cheatsheet"
 ]
 
     [[plugins.source]]
@@ -832,28 +895,24 @@ min_length = 80.0
 title_scroll = "none"
 type = "active_window"
 
-[widget.bar]
-type = "prponkshe/mango-displays:bar"
-
 [widget.bar_2]
+enabled = false
 type = "noctalia/wallpaper_depth:bar"
 
 [widget.bar_3]
 type = "baizhu/paged-todo:bar"
 
-[widget.btn]
-type = "ezequiel/mango_layouts:btn"
-
 [widget.cpu]
 stat = "cpu_usage"
 type = "sysmon"
 
-[widget.date]
-format = "{:%a %d %b}"
-type = "clock"
+[widget.custom_button_2]
+glyph = "chevrons-down"
+type = "custom_button"
 
-[widget.file-search]
-type = "nightwatch75/file-search:file-search"
+[widget.date]
+format = "{:%d %b} -"
+type = "clock"
 
 [widget.input_volume]
 device = "input"
@@ -862,9 +921,6 @@ type = "volume"
 [widget.keyboard_layout]
 hide_when_single_layout = false
 type = "keyboard_layout"
-
-[widget.launcher_2]
-type = "alexander/game-launcher:launcher"
 
 [widget.lock_keys]
 display = "short"
@@ -883,7 +939,13 @@ type = "media"
 
 [widget.monitor]
 highlight_gamer_mode = false
+interactive = false
+show_net = false
 type = "nomadcxx/gamer-mode:monitor"
+
+    [widget.monitor.actions]
+    left = "none"
+    middle = "none"
 
 [widget.network_rx]
 stat = "net_rx"
@@ -896,6 +958,7 @@ type = "sysmon"
 [widget.now-playing]
 artist_first = true
 font_weight = 400
+hide_album_art = true
 scale = 1.1000000000000001
 title_scroll = "always"
 type = "tranzem/media-lyrics:now-playing"
@@ -912,6 +975,10 @@ type = "sysmon"
 interactive = false
 type = "spacer"
 
+[widget.spacer_2]
+length = 400
+type = "spacer"
+
 [widget.status]
 type = "tiobaka/vm-manager:status"
 
@@ -925,18 +992,29 @@ type = "aristides/udiskie:status"
 stat = "cpu_temp"
 type = "sysmon"
 
+[widget.toggle]
+type = "maddingo/hypr-layout-switcher:toggle"
+
+[widget.tray]
+hide_passive = false
+type = "tray"
+
 [widget.wallhaven]
+enabled = false
 type = "noctalia/wallhaven:wallhaven"
 
 [widget.widget]
 type = "blackbartblues/audio-switcher:widget"
 
 [widget.widget_2]
+scale = 1.1000000000000001
 type = "aabidk20/yt-music:widget"
 
 [widget.widget_3]
-enabled = false
+scale = 0.90000000000000013
 type = "thepunkoff/pomodoro:widget"
+widget-glyph-main = "clock"
+widget-glyph-work = "hourglass"
 
 [widget.widget_4]
 enabled = false
