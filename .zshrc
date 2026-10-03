@@ -1,209 +1,78 @@
-#	   ______ 
-#	  / __/ /    Sandro Levy  
-#	 _\ \/ /__   https://github.com/sandrolevy
-#	/___/____/
-#          
-# My zsh config. Not much to see here; just some pretty standard stuff.
-
-### CHANGE TITLE OF TERMINALS
-case ${TERM} in
-  xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-        ;;
-  screen*)
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-    ;;
-esac
-
-eval "$(starship init zsh)"
-
-### ARCHIVE EXTRACTION
-# usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;      
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/sandro-levy/.oh-my-zsh"
-
-# Set name of the theme to load
-#ZSH_THEME="spaceship"
-
-# navigation
-alias ..='cd ..' 
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-
-# vim and emacs
-alias em="/usr/bin/emacs -nw"
-alias emacs="emacsclient -c -a 'emacs'"
-alias doomsync="~/.emacs.d/bin/doom sync"
-alias doomdoctor="~/.emacs.d/bin/doom doctor"
-alias doomupgrade="~/.emacs.d/bin/doom upgrade"
-alias doompurge="~/.emacs.d/bin/doom purge"
-
-# FD FIND
-alias fdfind=fd
-
-# Changing "ls" to "exa"
-alias ls='exa -al --color=always --group-directories-first' # my preferred listing
-alias ea='exa -a --color=always --group-directories-first'  # all files and dirs
-alias el='exa -l --color=always --group-directories-first'  # long format
-alias et='exa -aT --color=always --group-directories-first' # tree listing
-alias e.='exa -a | egrep "^\."'
-
-# Colorize grep output (good for log files)
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
-
-# bare git repo alias for dotfiles
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
-alias notes="/usr/bin/git --git-dir=$HOME/.notes --work-tree=$HOME/Dropbox/org/roam"
-
-alias full-update="sudo apt list --upgradable && sudo apt update && sudo apt dist-upgrade && sudo apt install -f && sudo apt autoremove && sudo apt autoclean && sudo flatpak update"
-
-# Uncomment the following line if pasting URLs and other text is 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	git 
-	fd
-	emacs
-)
-
-# OH MY ZSH SOURCE #
-source $ZSH/oh-my-zsh.sh
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-    
-#SPACESHIP_PROMPT_ORDER=(
-#  user          # Username section
-#  dir           # Current directory section
-#  host          # Hostname section
-#  git           # Git section (git_branch + git_status)
-#  hg            # Mercurial section (hg_branch  + hg_status)
-#  exec_time     # Execution time
-#  line_sep      # Line break
-#  vi_mode       # Vi-mode indicator
-#  jobs          # Background jobs indicator
-#  exit_code     # Exit code section
-#  char          # Prompt character
-#)
-#SPACESHIP_USER_SHOW=always
-#SPACESHIP_PROMPT_ADD_NEWLINE=false
-#SPACESHIP_CHAR_SYMBOL="❯"
-#SPACESHIP_CHAR_SUFFIX=" "
+# zsh plugin manager
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-### End of Zinit's installer chunk
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
-### FZF FUZZY FINDER CONFIGURATION ###
-[ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
-export FZF_DEFAULT_OPTS="
---layout=reverse
---info=inline
---height=80%
---multi
---border
---preview-window=:hidden
---preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
---color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
---prompt='∼ '
---bind '?:toggle-preview'
---bind 'ctrl-a:select-all'
---bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
---bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
---bind 'ctrl-v:execute(code {+})'
-"
-export FZF_CTRL_T_COMMAND='command fd --hidden --no-ignore --ignore-case . $HOME'
-export FZF_ALT_C_COMMAND='command fd --hidden --no-ignore --ignore-case -t d . $HOME'
+# Load completions
+autoload -Uz compinit && compinit
 
-# Remove keybinds
-bindkey -r "^[c"  # fzf-cd-widget
-bindkey -r "^T" # fzf-file-widget
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
 
-# CUSTOM KEYBINDS
-bindkey  "^[d"  fzf-cd-widget
-bindkey  "^F"  fzf-file-widget
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-## SET TO OPEN FILES WITH FZF ##
-open() {
-  IFS=$'\n' out=("$(fd . $HOME|fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
-  key=$(head -1 <<< "$out")
-  file=$(head -2 <<< "$out" | tail -1)
-  xdg-open "$file">/dev/null 2>&1
-}
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-zle -N open
-bindkey "^O" open
+# Aliases
+alias ls='ls --color'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sandro-levy/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sandro-levy/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sandro-levy/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sandro-levy/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Changing "ls" to "eza"
+alias ls='eza -a --color=always --group-directories-first' # my preferred listing
+alias ll='eza -l --color=always --group-directories-first'  # long format
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+alias l.='eza -al --color=always --group-directories-first ../' # ls on the PARENT directory
+alias l..='eza -al --color=always --group-directories-first ../../' # ls on directory 2 levels up
+alias l...='eza -al --color=always --group-directories-first ../../../' # ls on directory 3 levels up
 
-colorscript random
-export PATH=$HOME/.config/rofi/bin:$PATH
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
