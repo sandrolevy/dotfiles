@@ -1,0 +1,125 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+#
+# Converted from the legacy YAML format to the current TOML format
+# (Alacritty >= 0.13). Field names below follow the new schema:
+#   - `key_bindings`            -> `[keyboard] bindings`
+#   - `background_opacity`      -> `[window] opacity`
+#   - `KeyN` key identifiers    -> plain digit strings, e.g. "0"
+#   - everything else keeps the same nesting, just expressed as TOML tables.
+
+# Any items in the `[env]` table are added as environment variables.
+# Some entries may override variables set by alacritty itself.
+[env]
+# This value is used to set the `$TERM` environment variable for each
+# instance of Alacritty. If it is not present, alacritty will check the
+# local terminfo database and use `alacritty` if it is available,
+# otherwise `xterm-256color` is used.
+TERM = "xterm-256color"
+
+[terminal.shell]
+program = "/bin/zsh"
+args = ["--login"]
+
+[window]
+# Window padding (changes require restart).
+#
+# Blank space added around the window in pixels. This padding is scaled
+# by DPI and the specified value is always added at both opposing sides.
+padding = { x = 6, y = 6 }
+
+# Window title.
+title = "Alacritty"
+
+# Window class (Linux/BSD only).
+class = { instance = "Alacritty", general = "Alacritty" }
+
+# Background opacity as a floating point number from `0.0` to `1.0`.
+# `0.0` is completely transparent and `1.0` is opaque.
+opacity = 0.95
+
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+# Specifying '0' will disable scrolling.
+history = 5000
+
+[font]
+# Point size.
+size = 11.0
+
+# Normal (roman) font face.
+normal = { family = "Adwaita Mono", style = "Regular" }
+
+# Bold font face.
+bold = { family = "Adwaita Mono", style = "Bold" }
+
+# Italic font face.
+italic = { family = "Adwaita Mono", style = "Italic" }
+
+# Bold italic font face.
+bold_italic = { family = "Adwaita Mono", style = "Bold Italic" }
+
+# Offset is the extra space around each character. `offset.y` can be
+# thought of as modifying the line spacing, and `offset.x` as modifying
+# the letter spacing.
+offset = { x = 0, y = 1 }
+
+[general]
+import = [
+    "~/.config/alacritty/themes/noctalia.toml"
+]
+
+[colors]
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors = true
+
+# Colors (Dracula)
+[colors.primary]
+background = "#282a36"
+foreground = "#f8f8f2"
+
+[colors.normal]
+black   = "#000000"
+red     = "#ff5555"
+green   = "#50fa7b"
+yellow  = "#f1fa8c"
+blue    = "#caa9fa"
+magenta = "#ff79c6"
+cyan    = "#8be9fd"
+white   = "#bfbfbf"
+
+[colors.bright]
+black   = "#575b70"
+red     = "#ff6e67"
+green   = "#5af78e"
+yellow  = "#f4f99d"
+blue    = "#caa9fa"
+magenta = "#ff92d0"
+cyan    = "#9aedfe"
+white   = "#e6e6e6"
+
+# Key bindings are specified as an array of tables.
+#
+# Each key binding specifies a `key`, and then exactly one of `chars`,
+# `action`, or `command`; plus optionally `mods` and `mode`.
+# See the Alacritty documentation for the full list of accepted values:
+# https://alacritty.org/config-alacritty.html
+[keyboard]
+bindings = [
+  # (Windows, Linux, and BSD only)
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "Insert", mods = "Shift", action = "PasteSelection" },
+  { key = "0", mods = "Control", action = "ResetFontSize" },
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+
+  { key = "Paste", action = "Paste" },
+  { key = "Copy", action = "Copy" },
+  { key = "L", mods = "Control", action = "ClearLogNotice" },
+  { key = "L", mods = "Control", chars = "\u000c" },
+  { key = "PageUp", mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+  { key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+  { key = "Home", mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+  { key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+]
