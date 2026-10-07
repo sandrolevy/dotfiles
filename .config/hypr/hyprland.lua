@@ -17,7 +17,6 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-disable_hyprland_utils_warning = true
 ------------------
 ---- MONITORS ----
 ------------------
@@ -227,8 +226,8 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "br",
-        kb_variant = "abnt2",
+        kb_layout  = "us",
+        kb_variant = "",
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
@@ -380,10 +379,3 @@ hl.window_rule({
 })
 
 
-
-
-
-
-
--- For Noctalia Color templates
-require("noctalia").apply_theme()
